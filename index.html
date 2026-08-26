@@ -1,0 +1,2211 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * Maha Saleemi — Conversion Copywriter Portfolio
+ * Single-File Complete Implementation (All-in-One Component)
+ */
+
+import React, { useState, useEffect, useId } from 'react';
+import {
+  Mail,
+  Linkedin,
+  Menu,
+  X,
+  ArrowRight,
+  ArrowUpRight,
+  Sparkles,
+  CheckCircle2,
+  ShieldCheck,
+  Filter,
+  FileText,
+  RefreshCw,
+  AlertCircle,
+  Lightbulb,
+  GraduationCap,
+  MapPin,
+  Award,
+  CheckCircle,
+  ChevronDown,
+  ChevronUp,
+  Layers,
+  Video,
+  Copy,
+  Check,
+  Clock,
+  Target,
+  Info,
+  ShieldAlert,
+  Calendar,
+  Calculator,
+  TrendingUp,
+  Users,
+} from 'lucide-react';
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TYPES & INTERFACES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+export interface AdItem {
+  id: string;
+  number: number;
+  title: string;
+  angle: string;
+  audienceTemp: string;
+  painPoint: string;
+  hook: {
+    time: string;
+    text: string;
+  };
+  problem: {
+    time: string;
+    text: string;
+  };
+  uniqueAngle: {
+    time: string;
+    text: string;
+  };
+  cta: {
+    time: string;
+    text: string;
+  };
+  whyItWorks: string;
+}
+
+export interface EmailItem {
+  id: string;
+  number: number;
+  stage: string;
+  subject: string;
+  previewText?: string;
+  body: string[];
+  signoff?: string;
+}
+
+export interface VSLSection {
+  number: number;
+  title: string;
+  paragraphs: string[];
+  callout?: string;
+}
+
+export interface Certification {
+  id: string;
+  title: string;
+  issuer: string;
+  issuedDate: string;
+  expiryDate?: string;
+  badgeType: 'hubspot' | 'google' | 'openai';
+}
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  deliverables: string[];
+  idealFor: string;
+  outcome: string;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DATA & CONSTANTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+export const GMAIL_AUDIT_URL =
+  'https://mail.google.com/mail/?view=cm&fs=1&to=mahasaleemi053@gmail.com&su=Free%20Funnel%20Audit%20Request&body=Hi%20Maha%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20learn%20more%20about%20how%20you%20can%20help%20improve%20our%20clinic%27s%20conversions.%0A%0AClinic%2FBusiness%20Name%3A%20%0AWebsite%2FSocial%20Link%3A%20%0A%0ALooking%20forward%20to%20hearing%20from%20you!';
+
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/maha-s-7bb503419';
+
+export const PERSONAL_INFO = {
+  name: 'Maha Saleemi',
+  initials: 'MS',
+  title: 'Conversion Copywriter | Dermatology & Aesthetic Clinics',
+  tagline: 'Ads, VSLs & Email Sequences That Book Treatment',
+  location: 'Islamabad, Pakistan',
+  education: 'University of the Punjab',
+  email: 'mahasaleemi053@gmail.com',
+};
+
+export const SKILLS = [
+  'Copywriting',
+  'Email Marketing',
+  'Content Marketing',
+  'Google Ads',
+  'Prompt Engineering',
+  'Artificial Intelligence (AI)',
+];
+
+export const CERTIFICATIONS: Certification[] = [
+  {
+    id: 'hubspot-content',
+    title: 'Content Marketing Certified',
+    issuer: 'HubSpot Academy',
+    issuedDate: 'Issued Jun 2026',
+    expiryDate: 'Expires Jun 2028',
+    badgeType: 'hubspot',
+  },
+  {
+    id: 'hubspot-email',
+    title: 'Email Marketing Certified',
+    issuer: 'HubSpot Academy',
+    issuedDate: 'Issued Jul 2026',
+    expiryDate: 'Expires Aug 2028',
+    badgeType: 'hubspot',
+  },
+  {
+    id: 'google-ads',
+    title: 'Google Ads Search Certification',
+    issuer: 'Google Digital Academy (Skillshop)',
+    issuedDate: 'Issued Jul 2026',
+    expiryDate: 'Expires Jul 2027',
+    badgeType: 'google',
+  },
+  {
+    id: 'openai-ai',
+    title: 'Applied AI Foundations',
+    issuer: 'OpenAI',
+    issuedDate: 'Issued Jul 2026',
+    badgeType: 'openai',
+  },
+];
+
+export const CASE_STUDY_SHARED = {
+  title: 'Clearwell Dermatology — Adult Acne Multi-Session Treatment Program',
+  clientBrief:
+    'Direct-response campaign for a $150–$350/session (or $600–$1,200 package) medical-grade acne treatment program, targeting adults 20–30 disillusioned with rushed dermatology visits, MedSpa upselling, and failed DIY skincare routines.',
+  offer:
+    'Medical-grade facials, prescription topicals, and laser/light therapy. $150–$350 per single session, or $600–$1,200 for a 4–6 session package. 6–8 week results window.',
+  audience:
+    "Warm traffic, adults 20–30, primarily people who've already cycled through OTC products, complex routines, and at least one disappointing derm or med spa visit. Emotionally fatigued, skeptical of upsells, burned out on products that overpromised.",
+  strategicSummary:
+    'Five scripts were built around five distinct entry points into audience skepticism, each engineered to disarm a specific objection before introducing the offer. Scripts were later adapted to a first-person dermatologist POV to increase perceived medical authority and trust, a common conversion lever in aesthetic medicine advertising where credibility is a primary purchase driver.',
+};
+
+export const ADS_DATA: AdItem[] = [
+  {
+    id: 'ad-1',
+    number: 1,
+    title: 'Ad 1: "The Five Minute Visit"',
+    angle: 'Dermatologist disillusionment',
+    audienceTemp: 'Cold to warm',
+    painPoint:
+      'Rushed clinical visits, lack of education on treatment side effects (retinoid purging, barrier repair)',
+    hook: {
+      time: '0:00–0:03',
+      text: '"I used to give patients five minutes and a prescription. I don\'t do that anymore."',
+    },
+    problem: {
+      time: '0:03–0:18',
+      text: '"Early in my career, that\'s what a packed schedule looked like. Write the script, move to the next room, hope the patient figured out the rest on their own. I\'d hear back weeks later that their skin got worse before anyone explained purging was normal. That\'s not good medicine, it\'s just fast medicine."',
+    },
+    uniqueAngle: {
+      time: '0:18–0:32',
+      text: '"Now I sit down with every patient and walk through why their acne keeps returning before I treat anything. We build a six to eight week plan that adjusts as your skin responds, not a script you fill and figure out alone."',
+    },
+    cta: {
+      time: '0:32–0:42',
+      text: '"If your last dermatologist visit felt rushed, come see us. I\'ll actually explain what\'s happening to your skin before we start treating it."',
+    },
+    whyItWorks:
+      'Reframes a common failure point (the rushed appointment) as something the speaker used to do and has since corrected, which builds credibility through admitted imperfection rather than a polished sales claim.',
+  },
+  {
+    id: 'ad-2',
+    number: 2,
+    title: 'Ad 2: "The Upsell"',
+    angle: 'Zero-upsell trust guarantee',
+    audienceTemp: 'Cold',
+    painPoint: 'Fear of high-pressure sales tactics, distrust of MedSpa product pitches',
+    hook: {
+      time: '0:00–0:03',
+      text: '"I\'m a dermatologist, and I will not point at your pores to sell you a product line."',
+    },
+    problem: {
+      time: '0:03–0:16',
+      text: '"I\'ve had patients come to me after MedSpa visits where an esthetician listed everything wrong with their skin, then handed them a six hundred dollar shopping list. That\'s not treatment. That\'s a sales pitch wearing a lab coat."',
+    },
+    uniqueAngle: {
+      time: '0:16–0:30',
+      text: '"In my practice, we don\'t do that. No upsells during your session. We build your treatment plan around your skin, and we work with whatever\'s already in your routine that\'s actually helping."',
+    },
+    cta: {
+      time: '0:30–0:40',
+      text: '"Book a consultation and see how a session runs without the pitch at the end."',
+    },
+    whyItWorks:
+      'Names the exact mechanism of past exploitation (pointing out flaws to sell product) rather than a vague promise of "honesty," which makes the guarantee feel specific and earned.',
+  },
+  {
+    id: 'ad-3',
+    number: 3,
+    title: 'Ad 3: "Still Breaking Out at 26"',
+    angle: 'Age-based frustration',
+    audienceTemp: 'Warm',
+    painPoint: 'Belief that adult acne signals permanent or untreatable skin dysfunction',
+    hook: {
+      time: '0:00–0:03',
+      text: '"Patients ask me constantly, why am I still breaking out at 26?"',
+    },
+    problem: {
+      time: '0:03–0:17',
+      text: '"Adult acne isn\'t rare, and it\'s almost never bad luck. Most of the patients I see have spent years stacking cleansers, serums, and prescriptions on top of each other without anyone explaining what their skin actually needed."',
+    },
+    uniqueAngle: {
+      time: '0:17–0:31',
+      text: '"In most cases, the real issue is a damaged skin barrier from years of harsh products layered together. My program spends the first two weeks calming that barrier before we introduce active treatment at all, which is why results tend to hold instead of relapsing."',
+    },
+    cta: {
+      time: '0:31–0:41',
+      text: '"If that sounds like your skin, book a consultation with me. Link below."',
+    },
+    whyItWorks:
+      'Externalizes blame away from the patient ("it\'s almost never bad luck") while still giving a concrete physiological explanation, which relieves shame without sounding dismissive of the real damage caused by past products.',
+  },
+  {
+    id: 'ad-4',
+    number: 4,
+    title: 'Ad 4: "The Mirror Check"',
+    angle: 'Emotional self-consciousness',
+    audienceTemp: 'Warm to retargeted',
+    painPoint:
+      'Mental exhaustion of constant self-monitoring, desire to stop thinking about skin altogether',
+    hook: {
+      time: '0:00–0:03',
+      text: '"The patients I see aren\'t chasing perfect skin. They\'re exhausted."',
+    },
+    problem: {
+      time: '0:03–0:19',
+      text: '"Most of them describe the same thing to me. Checking their skin in every mirror they pass, covering up before video calls, second-guessing a photo before they post it. That mental weight is often harder on someone than the acne itself."',
+    },
+    uniqueAngle: {
+      time: '0:19–0:33',
+      text: '"I\'m not going to promise you flawless skin in six weeks. What I can build is a structured plan that calms your skin enough that you stop thinking about it constantly, which is usually what people actually came in for."',
+    },
+    cta: {
+      time: '0:33–0:43',
+      text: '"If you\'re ready to stop checking the mirror, book your first session with me."',
+    },
+    whyItWorks:
+      'Explicitly rejects the "flawless skin" promise this audience has learned to distrust, then replaces it with the actual outcome they\'re chasing (mental relief), which research showed matters more to this group than cosmetic perfection.',
+  },
+  {
+    id: 'ad-5',
+    number: 5,
+    title: 'Ad 5: "Before You Try Another Serum"',
+    angle: 'Comparison shopping / price objection',
+    audienceTemp: 'Cold, high purchase intent',
+    painPoint: 'Outcome uncertainty disguised as price hesitation',
+    hook: {
+      time: '0:00–0:03',
+      text: '"Before you buy another forty dollar serum, I want to tell you something as a dermatologist."',
+    },
+    problem: {
+      time: '0:03–0:18',
+      text: '"I see patients who\'ve spent more treating their acne piecemeal than they realize. A cleanser here, a serum there, a rushed dermatology visit that never really addressed the cause. It adds up, and none of it answers why the breakouts keep coming back."',
+    },
+    uniqueAngle: {
+      time: '0:18–0:32',
+      text: '"A single session with me runs $150 to $350. If you decide to continue into the full program, that cost applies directly to your package. Nothing wasted while you figure out whether it\'s right for you."',
+    },
+    cta: {
+      time: '0:32–0:42',
+      text: '"Book your first session and I\'ll walk you through an actual plan for your skin. Link below."',
+    },
+    whyItWorks:
+      'Addresses the price objection by reframing it against cumulative spending on failed products rather than defending the price itself, and removes financial risk with the credit-rollover structure instead of relying on urgency or scarcity.',
+  },
+];
+
+export const EMAILS_DATA: EmailItem[] = [
+  {
+    id: 'email-1',
+    number: 1,
+    stage: 'Email 1 – Awareness',
+    subject: 'the thing nobody tells you about adult acne',
+    previewText: "it's not your fault, and it's not your hygiene",
+    body: [
+      'Hey [First Name],',
+      "You're not sixteen anymore. So why does your skin still act like it?",
+      "If you're staring at a new cyst on your jawline right now, wondering how it's possible that you're still dealing with this in your twenties, you're not alone, and you're not doing anything wrong. Adult acne isn't a hygiene problem. It's usually a barrier problem, and almost nobody explains that part to you.",
+      "Most people spend years cycling through drugstore products, viral serums, and rushed dermatologist visits before anyone actually tells them what's going on underneath the surface.",
+      "Over the next few days I want to walk you through why the usual approach keeps failing this specific type of acne, and what actually works instead. No sales pitch today. Just the truth about what's happening to your skin.",
+      "Reply and tell me what you've already tried. I read every response.",
+    ],
+    signoff: '[First Name from Clearwell Dermatology]',
+  },
+  {
+    id: 'email-2',
+    number: 2,
+    stage: 'Email 2 – Problem Agitation',
+    subject: 'why your skin keeps getting worse after it gets better',
+    previewText: 'the pattern almost every adult acne sufferer goes through',
+    body: [
+      'Most people who come to us have already been through the same three rounds.',
+      "Round one is over the counter. Salicylic acid, benzoyl peroxide, maybe a scrub brush when the gentle stuff doesn't work fast enough. It dries things out for a week, then the skin panics and produces even more oil to compensate.",
+      "Round two is the internet routine. Retinol, niacinamide, vitamin C, an acid exfoliant, layered together because a fifteen second video said this combination changed someone's life. Instead it usually causes irritation, and now you can't tell if a new breakout is the acne or the products fighting each other.",
+      "Round three is the derm visit you waited two months for. Five minutes, a prescription, and a warning that things might get worse before they get better. Nobody tells you how to manage the peeling. Nobody tells you what normal purging looks like versus what's actually a bad reaction. You're left guessing, again.",
+      'By the time people find us, they\'ve usually asked themselves some version of this question: is my skin just permanently broken?',
+      "It isn't. But the reason none of those three rounds worked is the same reason, every time. None of them addressed the actual barrier damage underneath the breakouts. Tomorrow I'll explain what that means and why it changes everything.",
+    ],
+    signoff: '[First Name]',
+  },
+  {
+    id: 'email-3',
+    number: 3,
+    stage: 'Email 3 – Mechanism Reveal',
+    subject: "the missing piece in every acne treatment you've tried",
+    body: [
+      "Here's what almost never gets explained to you at a five minute dermatology appointment or a rushed spa consult.",
+      "Acne isn't just clogged pores. It's inflammation sitting on top of a damaged skin barrier, and most treatments only address one half of that equation.",
+      'Strip the skin with harsh actives and you dry out the surface, but the inflammation underneath stays active, so the breakouts keep coming. Treat only the inflammation without repairing the barrier, and your skin stays reactive to everything, meaning new products, weather, stress, all of it can trigger another flare.',
+      "That's the gap our program is built to close. Our 6 to 8 week protocol works in three phases.",
+      'Weeks one and two calm active inflammation and start repairing the barrier using light therapy and a simplified home routine, not a ten step regimen.',
+      'Weeks three through five introduce targeted treatment for clogged pores and active lesions, once the skin can actually tolerate it without a bad reaction.',
+      'Weeks six through eight focus on fading the marks left behind and locking in a routine you can maintain without us.',
+      "It's not a miracle claim. It's a sequence, built around how skin actually heals. Next email, I'll show you what that sequence looks like in real patients, not just in theory.",
+    ],
+    signoff: '[First Name]',
+  },
+  {
+    id: 'email-4',
+    number: 4,
+    stage: 'Email 4 – Proof & Authority',
+    subject: 'what week 2, week 4, and week 8 actually look like',
+    body: [
+      'A lot of people ask us the same question before they book anything: does this actually work, or is 6 to 8 weeks just another number designed to sound reasonable?',
+      "Fair question. So instead of telling you, here's what the process actually looks like.",
+      "By week two, most patients see less active inflammation and calmer, less painful cystic breakouts, even before the deeper clearing work starts. That's the barrier repair phase doing its job.",
+      'By week four, active lesions are noticeably fewer, and skin can typically tolerate the targeted treatment phase without the peeling and redness people are used to from harsh prescriptions.',
+      'By week eight, most patients are dealing with maintenance and fading post-acne marks rather than active breakouts. Not flawless skin. Calm, predictable skin, which is what most people actually want anyway.',
+      'Every plan is built around your specific skin, led by licensed medical providers who run a full diagnostic before recommending anything, not a generic package sold to everyone who walks in.',
+      "Results vary depending on where your skin is starting from, and we'll tell you honestly during your consult if your case needs a different approach or a longer timeline. We'd rather be straight with you upfront than sell you a promise we can't back up.",
+    ],
+    signoff: '[First Name]',
+  },
+  {
+    id: 'email-5',
+    number: 5,
+    stage: 'Email 5 – Offer Breakdown',
+    subject: 'how the program actually works (pricing included)',
+    body: [
+      'I know a lot of people read the last email and immediately thought, okay, so what\'s this going to cost me, and is this just going to be another product pitch.',
+      'Let me break it down plainly.',
+      'You don\'t have to commit to the full program on day one. You can start with a single diagnostic session, priced between $150 and $350, where a provider actually examines your skin and builds a plan specific to you. If you decide to continue, 100% of that session fee applies directly toward the full package.',
+      'The full protocol runs $600 to $1,200 for 4 to 6 sessions across your 6 to 8 week plan, covering in-clinic light therapy or targeted treatment, prescription topicals where appropriate, and ongoing guidance so you\'re never left guessing what a new breakout means mid-program.',
+      'Here\'s the part most people care about most. We work with your current gentle routine. We are not going to hand you a $500 product suite you didn\'t ask for. That\'s a written commitment, not a sales line.',
+      'If your skin has been through the wringer already, this is designed to be the last thing you try, not one more thing added to the pile.',
+    ],
+    signoff: '[First Name]',
+  },
+  {
+    id: 'email-6',
+    number: 6,
+    stage: 'Email 6 – Objection Handling',
+    subject: '"will you just try to sell me more stuff?"',
+    body: [
+      "That question comes up in almost every consult we run, so let's deal with it directly instead of pretending it doesn't come up.",
+      "Will you keep selling me things after I book? No. We commit to working with your existing basic routine. If a specific product genuinely matters for your results, we'll tell you why, and you're free to say no. There's no quota, no membership lock-in, no pressure.",
+      "Will this make my skin worse before it gets better? Some patients experience mild purging in the early weeks, which your provider will walk you through so you know exactly what to expect and what's normal versus what's not. That's very different from the unmanaged peeling a lot of people have dealt with from harsh prescriptions with zero guidance attached.",
+      "What if I'm one of the people this doesn't work for? This is exactly why we start with a diagnostic session instead of asking you to commit to the full package blind. If your case needs a different approach, we'll tell you that upfront, before you've spent a dollar on the full program.",
+      "Is $600 to $1,200 actually worth it compared to what I've already spent? Most people who come to us have already spent close to that, sometimes more, on products and treatments that didn't address the actual problem. This is built to be the version that finally does.",
+    ],
+    signoff: '[First Name]',
+  },
+  {
+    id: 'email-7',
+    number: 7,
+    stage: 'Email 7 – Urgency / Close',
+    subject: 'last call before this cohort fills',
+    body: [
+      "This is the last email in this series, so I'll keep it direct.",
+      "If you've read this far, some part of you is tired of the cycle. New product, short-lived improvement, breakout again, repeat. That part of you already knows another cleanser isn't going to fix this.",
+      "Diagnostic sessions for this month are limited because each one includes a real one-on-one consult with a provider, not a five minute glance. Once the slots are filled, the next opening won't be until next month.",
+      "Booking the diagnostic session doesn't commit you to anything beyond that one appointment. If it's not the right fit, you walk away having spent $199 on an honest answer about your skin. If it is, that fee rolls fully into your program.",
+      "Either way, you'll know more about what's actually happening with your skin in one session than you have in years of guessing.",
+    ],
+    signoff: '[First Name]',
+  },
+];
+
+export const EMAIL_COPYWRITER_NOTE =
+  "Copywriter's note (for portfolio context): This sequence intentionally withholds the offer until email 5, using the first four emails to build the specific kind of trust this audience needs before they'll consider spending $600+. The zero-upsell guarantee appears three separate times across the sequence rather than once, which was a deliberate choice based on audience research showing med spa upsell trauma as the top conversion blocker. Proof in email 4 is structured as a documented timeline rather than a testimonial quote, since process-based proof outperformed generic praise for this specific audience.";
+
+export const VSL_SECTIONS: VSLSection[] = [
+  {
+    number: 1,
+    title: '1. HOOK',
+    paragraphs: [
+      "If you've spent the last few years trying every acne product on the internet and your skin still isn't cooperating, I want you to stop for a second and consider something you probably haven't heard from a dermatologist, an esthetician, or anyone trying to sell you something.",
+      "Your skin isn't broken. It's been mistreated.",
+      'Not by you. By the routine you were told to follow.',
+    ],
+  },
+  {
+    number: 2,
+    title: '2. BIG PROMISE',
+    paragraphs: [
+      "Over the next few minutes, I'm going to show you the exact protocol we use at Clearwell Dermatology to calm active breakouts, repair a damaged skin barrier, and get you to visibly clearer skin in 6 to 8 weeks. No ten-step routine. No product cabinet. No one pointing at your face telling you what else is wrong with it.",
+      'Just a structured plan that treats your skin like an organ that needs healing, not a problem that needs punishing.',
+    ],
+  },
+  {
+    number: 3,
+    title: '3. RELATABILITY',
+    paragraphs: [
+      "You already know the morning routine. You reach up and check your jawline before you even open your eyes, hoping the bump from last night flattened out overnight. It didn't. It's still there, and it's angrier than it was yesterday.",
+      "Somewhere in your bathroom cabinet there's a half-used bottle of something that was supposed to fix this. A Vitamin C serum, maybe, that broke you out worse than when you started using it.",
+      'And the appointments haven\'t helped much either. You waited two months to see a dermatologist, the visit lasted five minutes, and you walked out with a prescription and a "this might just be something you deal with." You tried it anyway. Your face peeled for two weeks straight.',
+      'Maybe after that you gave a MedSpa a shot. Sat in the chair while someone pointed at your pores and told you the real fix was a product suite you hadn\'t budgeted for.',
+      "If any of that sounds familiar, you're not the exception. You're the pattern.",
+    ],
+  },
+  {
+    number: 4,
+    title: '4. PROBLEM AGITATION',
+    paragraphs: [
+      "Here's what nobody explains to you in any of those five minute appointments. Every one of those failed attempts did the same thing to your skin. It stripped the barrier.",
+      'Salicylic acid, benzoyl peroxide, physical scrubs, aggressive retinoids. Used on their own in moderation, they can help. Stacked on top of each other the way most routines end up, they strip your stratum corneum, dry out your skin, and trigger your glands to overproduce oil to compensate. That oil clogs your pores. Which causes more breakouts. Which sends you looking for something even stronger.',
+      "You're not failing at skincare. You're stuck in a loop that was never going to end on its own.",
+      "And underneath the physical cycle sits something heavier. You're twenty five, twenty eight, thirty, and you assumed this was a teenage problem you'd outgrow. Instead you're sitting in a work meeting wondering if your manager is looking at the cyst on your chin instead of listening to what you're saying. You're canceling plans because the lighting at that restaurant is unflattering. You're applying a heavier layer of foundation before video calls, which clogs your pores further and starts the whole thing over again.",
+      "None of that is vanity. It's exhausting to carry, and it's real.",
+    ],
+  },
+  {
+    number: 5,
+    title: '5. NEW OPPORTUNITY',
+    paragraphs: [
+      "So here's where things shift. The problem was never that your skin is uniquely difficult, or that you're doing something wrong every morning. The problem is that almost everything sold to treat acne attacks the surface without repairing what's underneath it.",
+      'At Clearwell, we start from a different assumption. Before we introduce anything new to your skin, we rebuild the barrier that\'s been stripped by everything you\'ve already tried. Calm first. Then clarity. That order matters more than most people realize, and it\'s the piece that gets skipped in a rushed dermatology visit or a product-driven MedSpa consultation.',
+    ],
+  },
+  {
+    number: 6,
+    title: '6. MECHANISM EXPLANATION',
+    paragraphs: [
+      'The program runs across three phases over six to eight weeks.',
+      'Weeks one and two are about calming active inflammation and repairing your moisture barrier. We use gentle LED light therapy and hydration-focused facials, paired with a simplified two-step home routine. Nothing aggressive. Nothing that adds to the damage that\'s already there.',
+      'Weeks three through five move into targeted treatment. Once your barrier is more stable, we introduce mild light therapy or IPL alongside controlled extractions and prescription topicals, calibrated to clear congestion without undoing the repair work from phase one.',
+      'Weeks six through eight focus on stabilization. This is where we address post-inflammatory marks, even out sebum production, and set you up with a maintenance plan you can actually sustain without needing to see us every week for the rest of the year.',
+      "Every session is done in-clinic under a provider who's assessing your skin directly, not selling off a menu.",
+      'And this next part is the one thing most people ask about first, so let\'s address it directly. We do not sell product lines. We call it our Zero-Upsell Guarantee. We work with the gentle cleanser and moisturizer you already own. If it\'s genuinely comedogenic or working against you, we\'ll tell you plainly and explain why, but we\'re not building your bill around a shelf of proprietary creams.',
+    ],
+  },
+  {
+    number: 7,
+    title: '7. PROOF',
+    paragraphs: [
+      'We track results the same way every time. Photos at week zero, week two, week four, week six, and week eight, same lighting, same angle, so you can actually see the progression instead of guessing at it.',
+      'One client came in at twenty six after two failed dermatology prescriptions and a MedSpa membership she regretted signing. By week four her active cystic breakouts had visibly reduced. By week eight, she told us she\'d stopped needing full coverage foundation to leave the house.',
+      "That's the outcome we're actually building toward. Not airbrushed skin. The ability to stop thinking about your face every time you walk into a room.",
+      "Results vary by skin type, history, and how your skin responds to treatment, and we'll tell you that honestly in your consultation rather than promising a number that isn't true for everyone.",
+    ],
+    callout:
+      '[Note: Client stories tracked through clinical photographic progression at weeks 0/2/4/6/8 in identical medical lighting]',
+  },
+  {
+    number: 8,
+    title: '8. OFFER REVEAL',
+    paragraphs: [
+      "Here's how we've structured this so you're not making a twelve hundred dollar decision on blind trust.",
+      'You start with a single diagnostic session, priced between $150 and $350 depending on your specific treatment plan. This is a full clinical assessment under magnification, plus your first calming treatment. You leave with a real sense of how your skin responds and what your plan looks like.',
+      'If you decide to continue into the full 6-to-8-week protocol, that entire session fee is credited, dollar for dollar, toward your package. The full program runs $600 to $1,200 for four to six sessions, depending on the treatment mix your skin needs.',
+      "You're never locked into the full program on day one. You're trying it first.",
+    ],
+  },
+  {
+    number: 9,
+    title: '9. BONUSES',
+    paragraphs: [
+      'Every client who books their diagnostic session this month also receives:',
+      '• A pre-consultation intake review, where we go through your full treatment history beforehand so your first session isn\'t spent re-explaining everything you\'ve already tried.',
+      '• A written barrier-repair home guide, the simplified two-step routine designed to work alongside your in-clinic sessions, so you\'re not guessing at what to do on the days you\'re not with us.',
+      '• And direct message access to your provider between sessions three and six, for the weeks where you have a question and don\'t want to wait until your next appointment to ask it.',
+    ],
+  },
+  {
+    number: 10,
+    title: '10. URGENCY',
+    paragraphs: [
+      'We intentionally keep our client load small enough that every session is done directly with a provider, not handed off to rotating staff. That means diagnostic session slots are limited each month.',
+      'If you\'re dealing with an event, a season, or a stretch of your life where you want your skin stabilized rather than getting worse while you wait, the sooner you start the six to eight week window, the sooner you\'re through it.',
+    ],
+  },
+  {
+    number: 11,
+    title: '11. CALL TO ACTION',
+    paragraphs: [
+      "If you're tired of starting over. If you're tired of routines that promise everything and deliver a peeling face and a bill for products you didn't ask for, book your diagnostic session below.",
+      "No product pitch. No membership pressure. Just an honest look at your skin and a plan built around fixing what's actually happening underneath it.",
+      "Click the link below to book your $150 to $350 diagnostic session at Clearwell Dermatology. Your fee rolls over completely if you continue. Your skin doesn't have to stay stuck in the same loop it's been in for years.",
+    ],
+  },
+];
+
+export const VSL_PRODUCTION_NOTES = {
+  runtime: '6–9 minutes at natural speaking pace',
+  points: [
+    'Recommend b-roll of clinic environment during Mechanism section (section 6) to reinforce clinical credibility without feeling like a sales floor',
+    'Consider text overlay of the three phase names during section 6 for retention',
+    'Testimonial in section 7 should be filmed as a real client if available; if using a placeholder for now, mark clearly as verified client testimonial before publishing',
+  ],
+};
+
+export const SERVICES: ServiceItem[] = [
+  {
+    id: 'ads',
+    title: 'Ad Copywriting',
+    subtitle: 'Pre-qualifying patient acquisition campaigns',
+    deliverables: [
+      'Multi-angle Meta & Google ad scripts (POV physician & patient angles)',
+      'High-intent hook variations tailored to aesthetic & clinical objections',
+      'Specific audience pre-qualification copy that filters out discount-seekers',
+      'Creative direction & visual text overlays for video ads',
+    ],
+    idealFor:
+      'Clinics spending $3k–$30k+/mo on paid media with high click volume but high consult no-show or low booking rates.',
+    outcome:
+      'Lower CPA on qualified appointments and filter for patients ready to invest in premium packages.',
+  },
+  {
+    id: 'landing-pages-vsl',
+    title: 'Landing Page & VSL Scripts',
+    subtitle: 'Pre-sell trust-building copy that closes before the visit',
+    deliverables: [
+      'Full long-form Video Sales Letter (VSL) scripts with visual cue notes',
+      'High-converting treatment landing pages (Desktop & Mobile optimized)',
+      'Zero-upsell mechanism positioning and clinical authority framing',
+      'Objection-handling sections & FAQ structures built on patient psychology',
+    ],
+    idealFor:
+      'Dermatology & MedSpa clinics selling $600–$3,000+ treatment packages needing higher consult attendance and immediate commitment.',
+    outcome:
+      'Patients show up to consultations already educated, trusting the physician, and pre-sold on the treatment roadmap.',
+  },
+  {
+    id: 'email-sequences',
+    title: 'Email Win-Back Sequences',
+    subtitle: 'Automated systems recovering lost consults & dormant leads',
+    deliverables: [
+      '7–10 part Problem-Aware to Offer-Aware nurture campaigns',
+      'Post-consultation follow-up sequences targeting unbooked attendees',
+      'Re-activation campaigns for past patients due for maintenance or new packages',
+      'High-deliverability plain-text & conversational clinical styling',
+    ],
+    idealFor:
+      'Aesthetic clinics with hundreds of past consultations or inbound leads sitting dormant in CRM/EMR.',
+    outcome:
+      'Recovers 15–20% of unbooked consultations without staff having to manually cold-call or discount services.',
+  },
+];
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SUB-COMPONENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Certifications', href: '#certifications' },
+    { name: 'Work', href: '#work' },
+    { name: 'Calculator', href: '#calculator' },
+    { name: 'Services', href: '#services' },
+    { name: 'Contact', href: '#contact' },
+  ];
+
+  return (
+    <header
+      id="main-navbar"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-xs py-3.5 border-b border-[#E8C4B8]/40'
+          : 'bg-white/80 backdrop-blur-xs py-5'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          <a href="#home" id="nav-logo" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center font-bold text-sm tracking-wider shadow-xs transition-transform duration-200 group-hover:scale-105">
+              {PERSONAL_INFO.initials}
+            </div>
+            <div className="flex flex-col">
+              <span className="font-bold text-[#1A1A1A] text-lg tracking-tight leading-none group-hover:text-[#3B2412] transition-colors">
+                {PERSONAL_INFO.name}
+              </span>
+              <span className="text-xs text-[#333333]/70 font-medium tracking-wide mt-0.5">
+                Conversion Copywriter
+              </span>
+            </div>
+          </a>
+
+          <nav className="hidden md:flex items-center gap-7" aria-label="Main Navigation">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                id={`nav-link-${link.name.toLowerCase()}`}
+                className="text-sm font-medium text-[#333333] hover:text-[#3B2412] transition-colors duration-150 py-1"
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden sm:flex items-center gap-3">
+            <a
+              href={GMAIL_AUDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="nav-email-btn"
+              title="Open Gmail to email Maha Saleemi"
+              className="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center transition-all duration-200 hover:bg-[#25160b] hover:scale-105 shadow-xs"
+              aria-label="Email Maha Saleemi via Gmail"
+            >
+              <Mail className="w-4 h-4" />
+            </a>
+
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="nav-linkedin-btn"
+              title="View LinkedIn Profile"
+              className="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center transition-all duration-200 hover:bg-[#25160b] hover:scale-105 shadow-xs"
+              aria-label="Connect on LinkedIn"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
+
+            <a
+              href={GMAIL_AUDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="nav-cta-btn"
+              className="hidden lg:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#3B2412] text-white text-xs font-semibold tracking-wide uppercase transition-all duration-200 hover:bg-[#25160b] hover:shadow-sm active:scale-98"
+            >
+              <span>Audit</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          <div className="flex md:hidden items-center gap-2">
+            <a
+              href={GMAIL_AUDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full bg-[#3B2412] text-white flex items-center justify-center"
+              aria-label="Email via Gmail"
+            >
+              <Mail className="w-4 h-4" />
+            </a>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              id="mobile-menu-toggle"
+              type="button"
+              className="p-2 rounded-lg text-[#3B2412] hover:bg-[#FDF8F6] focus:outline-hidden"
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {mobileMenuOpen && (
+        <div
+          id="mobile-menu-dropdown"
+          className="md:hidden bg-white border-b border-[#E8C4B8]/60 shadow-lg px-4 pt-3 pb-6 transition-all"
+        >
+          <div className="flex flex-col gap-3">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2 text-base font-medium text-[#1A1A1A] hover:bg-[#FDF8F6] rounded-lg transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+            <div className="pt-3 border-t border-[#E8C4B8]/40 flex items-center gap-3">
+              <a
+                href={GMAIL_AUDIT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[#3B2412] text-white text-sm font-semibold"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Book Free Audit (Gmail)</span>
+              </a>
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center shrink-0"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section
+      id="home"
+      className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden watercolor-bg"
+    >
+      <div className="absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay">
+        <svg
+          className="w-full h-full object-cover"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 800"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <radialGradient id="swirlGrad1" cx="30%" cy="30%" r="60%">
+              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.7" />
+              <stop offset="60%" stopColor="#FFFFFF" stopOpacity="0.1" />
+              <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+            </radialGradient>
+            <radialGradient id="swirlGrad2" cx="70%" cy="70%" r="50%">
+              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <path
+            d="M-50,300 C200,100 450,500 750,250 C950,100 1150,400 1300,200 L1300,900 L-50,900 Z"
+            fill="url(#swirlGrad1)"
+          />
+          <path
+            d="M-100,500 C300,350 600,650 900,450 C1100,300 1200,600 1300,550 L1300,900 L-100,900 Z"
+            fill="url(#swirlGrad2)"
+          />
+          <path
+            d="M50,150 Q400,350 800,100 T1250,300"
+            fill="none"
+            stroke="#FFFFFF"
+            strokeWidth="1.5"
+            strokeOpacity="0.35"
+            strokeDasharray="4 6"
+          />
+          <path
+            d="M0,450 Q500,200 950,550 T1300,400"
+            fill="none"
+            stroke="#FFFFFF"
+            strokeWidth="2"
+            strokeOpacity="0.25"
+          />
+          <path
+            d="M150,600 Q650,400 1100,650"
+            fill="none"
+            stroke="#FFFFFF"
+            strokeWidth="1.2"
+            strokeOpacity="0.3"
+          />
+        </svg>
+      </div>
+
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-xs border border-[#C08877]/40 shadow-xs mb-8">
+          <Sparkles className="w-3.5 h-3.5 text-[#3B2412]" />
+          <span className="text-xs sm:text-sm font-semibold tracking-wide text-[#3B2412] uppercase">
+            Conversion Copywriting for Dermatology & Aesthetic Clinics
+          </span>
+        </div>
+
+        <h1
+          id="hero-headline"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif-heading font-bold text-[#1A1A1A] leading-[1.1] tracking-tight mb-6"
+        >
+          They click. They visit. They book. <br className="hidden sm:inline" />
+          <span className="italic font-normal text-[#3B2412]">Then they vanish.</span>
+        </h1>
+
+        <p
+          id="hero-subheadline"
+          className="text-lg sm:text-xl md:text-2xl text-[#1A1A1A]/90 max-w-3xl mx-auto font-medium leading-relaxed mb-10"
+        >
+          15–20% more treatment appointments in 30 days —{' '}
+          <span className="font-semibold text-[#3B2412]">No discounts, no manual chasing</span>
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <a
+            href={GMAIL_AUDIT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            id="hero-cta-btn"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#3B2412] text-white text-base font-semibold tracking-wide shadow-md hover:bg-[#25160b] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 active:translate-y-0"
+          >
+            <span>Book a Free Audit</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
+
+          <a
+            href="#work"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white/90 text-[#3B2412] text-base font-semibold border border-[#C08877]/60 hover:bg-white transition-colors duration-200 shadow-xs"
+          >
+            <span>View Featured Campaign</span>
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto pt-6 border-t border-[#C08877]/30 text-left">
+          <div className="flex items-center gap-2.5 bg-white/60 backdrop-blur-xs p-3 rounded-xl border border-white/60">
+            <CheckCircle2 className="w-4 h-4 text-[#3B2412] shrink-0" />
+            <span className="text-xs sm:text-sm font-medium text-[#1A1A1A]">
+              Pre-Qualify Patients Before Click
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2.5 bg-white/60 backdrop-blur-xs p-3 rounded-xl border border-white/60">
+            <ShieldCheck className="w-4 h-4 text-[#3B2412] shrink-0" />
+            <span className="text-xs sm:text-sm font-medium text-[#1A1A1A]">
+              Disarm MedSpa Upsell Trauma
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2.5 bg-white/60 backdrop-blur-xs p-3 rounded-xl border border-white/60">
+            <CheckCircle2 className="w-4 h-4 text-[#3B2412] shrink-0" />
+            <span className="text-xs sm:text-sm font-medium text-[#1A1A1A]">
+              Recover Unbooked Consultations
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutProblemSolution() {
+  return (
+    <section id="about" className="py-20 md:py-28 bg-white border-b border-[#E8C4B8]/30">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <div className="inline-block px-3.5 py-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold uppercase tracking-wider text-[#3B2412] mb-4">
+            The Diagnosis & Core Promise
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-heading font-bold text-[#1A1A1A] leading-tight mb-6">
+            Dermatology clinic or aesthetic practice doing 6–7 figures/month?{' '}
+            <span className="italic text-[#3B2412]">
+              If your consults are up but bookings aren't, here's why.
+            </span>
+          </h2>
+
+          <div className="p-6 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 shadow-xs text-left sm:text-center">
+            <p className="text-lg sm:text-xl font-semibold text-[#3B2412] leading-snug">
+              "I help dermatology clinics and aesthetic practices convert 15–20% more consults into
+              booked treatments in 30 days, without relying on discounts or manual chasing."
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div className="p-8 rounded-2xl bg-white border border-[#C08877]/40 shadow-sm relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute top-0 left-0 w-1.5 h-full bg-[#C08877]" />
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-[#FDF8F6] border border-[#C08877]/30 flex items-center justify-center text-[#3B2412]">
+                  <AlertCircle className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-bold text-[#1A1A1A]">The False "Traffic Problem"</h3>
+              </div>
+              <p className="text-[#333333] text-base leading-relaxed">
+                Most dermatology clinics don't have a lead problem, they have a conversion problem.
+                Patients click the ad, visit the site, even sit through the consultation, then walk
+                out without booking treatment.
+              </p>
+              <p className="text-[#333333] text-base leading-relaxed mt-3">
+                Clinics respond by chasing more leads, running more ads, hiring another media buyer —
+                but the consult calendar stays full while the treatment room sits empty.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-[#E8C4B8]/40">
+              <span className="text-xs font-semibold text-[#C08877] uppercase tracking-wider">
+                The Symptom: High Consult Volume, Low Treatment Adoption
+              </span>
+            </div>
+          </div>
+
+          <div className="p-8 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/60 shadow-sm relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute top-0 left-0 w-1.5 h-full bg-[#3B2412]" />
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-white border border-[#C08877]/40 flex items-center justify-center text-[#3B2412]">
+                  <Lightbulb className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-bold text-[#1A1A1A]">The Real Mechanism Leak</h3>
+              </div>
+              <p className="text-[#333333] text-base leading-relaxed">
+                The real leak isn't traffic or even the consult. It's the words around it — the
+                copy that's supposed to build trust before, during, and after, but instead lets
+                patients quietly talk themselves out of saying yes.
+              </p>
+              <p className="text-[#333333] text-base leading-relaxed mt-3">
+                When patients fear being upsold on $500 product suites, or mistake normal purging
+                for treatment failure, they disengage in silence.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-[#C08877]/20">
+              <span className="text-xs font-semibold text-[#3B2412] uppercase tracking-wider">
+                The Diagnosis: Trust-Gap in Pre-Consult & Post-Consult Copy
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="mb-14">
+          <div className="text-center mb-10">
+            <h3 className="text-2xl sm:text-3xl font-serif-heading font-bold text-[#1A1A1A]">
+              The 3-Phase Conversion Fix
+            </h3>
+            <p className="text-sm text-[#333333]/80 mt-1 max-w-lg mx-auto">
+              Engineered systematically to plug revenue leaks across the entire patient journey.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-[#C08877]/40 hover:border-[#3B2412] transition-all duration-200 shadow-xs hover:shadow-md group">
+              <div className="w-12 h-12 rounded-xl bg-[#FDF8F6] border border-[#C08877]/30 flex items-center justify-center text-[#3B2412] mb-5 group-hover:bg-[#3B2412] group-hover:text-white transition-colors duration-200">
+                <Filter className="w-6 h-6" />
+              </div>
+              <span className="text-xs font-bold text-[#C08877] uppercase tracking-wider">
+                Phase 1
+              </span>
+              <h4 className="text-lg font-bold text-[#1A1A1A] mt-1 mb-2">1. Pre-qualify</h4>
+              <p className="text-sm text-[#333333] leading-relaxed">
+                Ad copy that filters for ready-to-book patients before they click, removing bargain
+                hunters and addressing skepticism upfront.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white border border-[#C08877]/40 hover:border-[#3B2412] transition-all duration-200 shadow-xs hover:shadow-md group">
+              <div className="w-12 h-12 rounded-xl bg-[#FDF8F6] border border-[#C08877]/30 flex items-center justify-center text-[#3B2412] mb-5 group-hover:bg-[#3B2412] group-hover:text-white transition-colors duration-200">
+                <FileText className="w-6 h-6" />
+              </div>
+              <span className="text-xs font-bold text-[#C08877] uppercase tracking-wider">
+                Phase 2
+              </span>
+              <h4 className="text-lg font-bold text-[#1A1A1A] mt-1 mb-2">2. Pre-sell</h4>
+              <p className="text-sm text-[#333333] leading-relaxed">
+                Page copy and VSLs that build trust before the consult, establishing the medical
+                mechanism and disarming the fear of pushy upsells.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white border border-[#C08877]/40 hover:border-[#3B2412] transition-all duration-200 shadow-xs hover:shadow-md group">
+              <div className="w-12 h-12 rounded-xl bg-[#FDF8F6] border border-[#C08877]/30 flex items-center justify-center text-[#3B2412] mb-5 group-hover:bg-[#3B2412] group-hover:text-white transition-colors duration-200">
+                <RefreshCw className="w-6 h-6" />
+              </div>
+              <span className="text-xs font-bold text-[#C08877] uppercase tracking-wider">
+                Phase 3
+              </span>
+              <h4 className="text-lg font-bold text-[#1A1A1A] mt-1 mb-2">3. Win back</h4>
+              <p className="text-sm text-[#333333] leading-relaxed">
+                Follow-ups that recover patients who consulted but didn't book, reframing cost and
+                answering hidden timeline fears.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-6 sm:p-8 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/60 text-center max-w-4xl mx-auto shadow-xs">
+          <p className="text-base sm:text-lg text-[#1A1A1A] font-medium leading-relaxed mb-4">
+            "I build every sentence on patient psychology and real buying behavior, not guesswork. If
+            your funnel has more consults than treatments booked, that's a copy problem — and it's
+            fixable fast."
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-4 border-t border-[#C08877]/20 text-xs sm:text-sm text-[#333333]/80">
+            <span className="font-bold text-[#3B2412]">{PERSONAL_INFO.name}</span>
+            <span>•</span>
+            <span className="inline-flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-[#C08877]" />
+              {PERSONAL_INFO.location}
+            </span>
+            <span>•</span>
+            <span className="inline-flex items-center gap-1.5">
+              <GraduationCap className="w-3.5 h-3.5 text-[#C08877]" />
+              {PERSONAL_INFO.education}
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SkillsSection() {
+  return (
+    <section className="py-12 bg-[#FDF8F6]/60 border-b border-[#E8C4B8]/30">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <Award className="w-4 h-4 text-[#3B2412]" />
+          <span className="text-xs font-bold uppercase tracking-widest text-[#3B2412]">
+            Core Competencies & Tooling
+          </span>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-3 max-w-3xl mx-auto">
+          {SKILLS.map((skill) => (
+            <div
+              key={skill}
+              className="px-4 py-2 rounded-full bg-white border border-[#3B2412]/30 text-sm font-semibold text-[#1A1A1A] shadow-xs hover:border-[#3B2412] hover:bg-white hover:scale-102 transition-all duration-150"
+            >
+              {skill}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CertificationsSection() {
+  return (
+    <section id="certifications" className="py-20 md:py-24 bg-white border-b border-[#E8C4B8]/30">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center mb-14">
+          <div className="inline-block px-3.5 py-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold uppercase tracking-wider text-[#3B2412] mb-3">
+            Verified Credentials
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-serif-heading font-bold text-[#1A1A1A]">
+            Certifications & Industry Credentials
+          </h2>
+          <p className="text-base text-[#333333] mt-2">
+            Rigorous training in direct-response architecture, email automation, search intent, and
+            applied AI.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {CERTIFICATIONS.map((cert) => (
+            <div
+              key={cert.id}
+              className="p-6 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/40 shadow-xs hover:shadow-md hover:border-[#3B2412] transition-all duration-200 flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-white border border-[#C08877]/30 flex items-center justify-center text-[#3B2412] mb-4 shadow-2xs font-bold text-sm">
+                  {cert.badgeType === 'hubspot' && (
+                    <span className="text-[#3B2412] font-mono font-bold">HS</span>
+                  )}
+                  {cert.badgeType === 'google' && (
+                    <span className="text-[#3B2412] font-mono font-bold">GA</span>
+                  )}
+                  {cert.badgeType === 'openai' && (
+                    <span className="text-[#3B2412] font-mono font-bold">AI</span>
+                  )}
+                </div>
+
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-[#3B2412] mb-1">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#C08877]" />
+                  <span>{cert.issuer}</span>
+                </div>
+
+                <h3 className="text-base font-bold text-[#1A1A1A] leading-snug mb-3">
+                  {cert.title}
+                </h3>
+              </div>
+
+              <div className="pt-4 border-t border-[#E8C4B8]/40 flex flex-col gap-1 text-xs text-[#333333]/80">
+                <div className="flex items-center justify-between">
+                  <span>{cert.issuedDate}</span>
+                  <span className="inline-flex items-center gap-1 text-[#3B2412] font-medium">
+                    <CheckCircle className="w-3 h-3 text-[#C08877]" />
+                    Verified
+                  </span>
+                </div>
+                {cert.expiryDate && (
+                  <span className="text-[11px] text-[#333333]/60">{cert.expiryDate}</span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+type TabType = 'ads' | 'emails' | 'vsl';
+
+function FeaturedWork() {
+  const [activeTab, setActiveTab] = useState<TabType>('ads');
+  const [openAds, setOpenAds] = useState<Record<string, boolean>>({ 'ad-1': true, 'ad-2': true });
+  const [openEmails, setOpenEmails] = useState<Record<string, boolean>>({
+    'email-1': true,
+    'email-2': true,
+  });
+  const [openVsl, setOpenVsl] = useState<Record<number, boolean>>({ 1: true, 2: true, 6: true });
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const toggleAd = (id: string) => {
+    setOpenAds((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const toggleEmail = (id: string) => {
+    setOpenEmails((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const toggleVsl = (num: number) => {
+    setOpenVsl((prev) => ({ ...prev, [num]: !prev[num] }));
+  };
+
+  const expandAll = () => {
+    if (activeTab === 'ads') {
+      const all: Record<string, boolean> = {};
+      ADS_DATA.forEach((ad) => {
+        all[ad.id] = true;
+      });
+      setOpenAds(all);
+    } else if (activeTab === 'emails') {
+      const all: Record<string, boolean> = {};
+      EMAILS_DATA.forEach((em) => {
+        all[em.id] = true;
+      });
+      setOpenEmails(all);
+    } else {
+      const all: Record<number, boolean> = {};
+      VSL_SECTIONS.forEach((v) => {
+        all[v.number] = true;
+      });
+      setOpenVsl(all);
+    }
+  };
+
+  const collapseAll = () => {
+    if (activeTab === 'ads') {
+      setOpenAds({});
+    } else if (activeTab === 'emails') {
+      setOpenEmails({});
+    } else {
+      setOpenVsl({});
+    }
+  };
+
+  const handleCopy = (id: string, text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  return (
+    <section id="work" className="py-20 md:py-28 bg-[#FFFFFF] border-b border-[#E8C4B8]/30">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold uppercase tracking-wider text-[#3B2412] mb-3">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Centerpiece Portfolio Case Study</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-heading font-bold text-[#1A1A1A] leading-tight mb-4">
+            Featured Work
+          </h2>
+
+          <p className="text-lg text-[#333333] leading-relaxed">
+            One campaign, three deliverables. Pick a format below and read the full piece.
+          </p>
+        </div>
+
+        {/* SHARED CLIENT BRIEF CONTEXT CARD */}
+        <div className="mb-10 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 p-6 sm:p-8 shadow-xs relative overflow-hidden">
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 pb-6 border-b border-[#E8C4B8]/60">
+            <div>
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#C08877] mb-1.5">
+                <Target className="w-3.5 h-3.5" />
+                <span>Client Case Study & Positioning</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-serif-heading font-bold text-[#1A1A1A]">
+                {CASE_STUDY_SHARED.title}
+              </h3>
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#C08877]/40 text-xs font-semibold text-[#3B2412] shrink-0">
+              <Calendar className="w-3.5 h-3.5 text-[#C08877]" />
+              <span>Full Conversion System</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 text-sm">
+            <div>
+              <h4 className="font-bold text-[#1A1A1A] uppercase tracking-wide text-xs mb-1.5 flex items-center gap-1.5">
+                <Info className="w-3.5 h-3.5 text-[#C08877]" />
+                Client Brief
+              </h4>
+              <p className="text-[#333333] leading-relaxed">{CASE_STUDY_SHARED.clientBrief}</p>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-[#1A1A1A] uppercase tracking-wide text-xs mb-1.5 flex items-center gap-1.5">
+                <ShieldAlert className="w-3.5 h-3.5 text-[#C08877]" />
+                Target Audience & Mindset
+              </h4>
+              <p className="text-[#333333] leading-relaxed">{CASE_STUDY_SHARED.audience}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* TAB SWITCHER */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+          <div
+            role="tablist"
+            aria-label="Campaign Deliverables"
+            className="w-full sm:w-auto inline-flex p-1.5 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 shadow-xs"
+          >
+            <button
+              role="tab"
+              aria-selected={activeTab === 'ads'}
+              id="tab-ads"
+              onClick={() => setActiveTab('ads')}
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-200 ${
+                activeTab === 'ads'
+                  ? 'bg-[#3B2412] text-white shadow-sm'
+                  : 'text-[#333333] hover:text-[#3B2412]'
+              }`}
+            >
+              <Layers className="w-4 h-4" />
+              <span>Ads (5 Scripts)</span>
+            </button>
+
+            <button
+              role="tab"
+              aria-selected={activeTab === 'emails'}
+              id="tab-emails"
+              onClick={() => setActiveTab('emails')}
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-200 ${
+                activeTab === 'emails'
+                  ? 'bg-[#3B2412] text-white shadow-sm'
+                  : 'text-[#333333] hover:text-[#3B2412]'
+              }`}
+            >
+              <Mail className="w-4 h-4" />
+              <span>Email Sequence (7 Emails)</span>
+            </button>
+
+            <button
+              role="tab"
+              aria-selected={activeTab === 'vsl'}
+              id="tab-vsl"
+              onClick={() => setActiveTab('vsl')}
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-200 ${
+                activeTab === 'vsl'
+                  ? 'bg-[#3B2412] text-white shadow-sm'
+                  : 'text-[#333333] hover:text-[#3B2412]'
+              }`}
+            >
+              <Video className="w-4 h-4" />
+              <span>VSL Script (Full 11-Part)</span>
+            </button>
+          </div>
+
+          <div className="flex items-center gap-2 self-end sm:self-auto">
+            <button
+              onClick={expandAll}
+              className="text-xs font-semibold text-[#3B2412] px-3 py-1.5 rounded-lg border border-[#C08877]/30 hover:bg-[#FDF8F6] transition-colors"
+            >
+              Expand All
+            </button>
+            <button
+              onClick={collapseAll}
+              className="text-xs font-semibold text-[#333333]/70 px-3 py-1.5 rounded-lg border border-[#C08877]/30 hover:bg-[#FDF8F6] transition-colors"
+            >
+              Collapse All
+            </button>
+          </div>
+        </div>
+
+        {/* TAB 1: ADS */}
+        {activeTab === 'ads' && (
+          <div className="space-y-6">
+            <div className="p-6 rounded-2xl bg-white border border-[#C08877]/40 shadow-xs">
+              <div className="flex items-start gap-3">
+                <Lightbulb className="w-5 h-5 text-[#3B2412] shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-[#3B2412] mb-1">
+                    Strategic Approach (Meta / Paid Social)
+                  </h4>
+                  <p className="text-sm text-[#333333] leading-relaxed">
+                    {CASE_STUDY_SHARED.strategicSummary}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {ADS_DATA.map((ad) => {
+                const isOpen = !!openAds[ad.id];
+                const fullAdText = `${ad.title}\nAngle: ${ad.angle}\nAudience: ${ad.audienceTemp}\nPain Point: ${ad.painPoint}\n\nHook (${ad.hook.time}): ${ad.hook.text}\n\nProblem (${ad.problem.time}): ${ad.problem.text}\n\nUnique Angle (${ad.uniqueAngle.time}): ${ad.uniqueAngle.text}\n\nCTA (${ad.cta.time}): ${ad.cta.text}\n\nWhy it works: ${ad.whyItWorks}`;
+
+                return (
+                  <div
+                    key={ad.id}
+                    className={`rounded-2xl border transition-all duration-200 overflow-hidden shadow-xs ${
+                      isOpen
+                        ? 'bg-white border-[#C08877] shadow-sm'
+                        : 'bg-[#FDF8F6] border-[#E8C4B8]/70 hover:border-[#C08877]'
+                    }`}
+                  >
+                    <button
+                      onClick={() => toggleAd(ad.id)}
+                      className="w-full px-6 py-5 flex items-start sm:items-center justify-between text-left gap-4"
+                      aria-expanded={isOpen}
+                    >
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2 mb-1">
+                          <span className="px-2.5 py-0.5 rounded-full bg-[#3B2412] text-white text-[11px] font-bold">
+                            Ad {ad.number}
+                          </span>
+                          <span className="text-xs font-semibold text-[#C08877]">{ad.angle}</span>
+                          <span className="text-xs text-[#333333]/60">
+                            • Temp: <strong className="text-[#1A1A1A]">{ad.audienceTemp}</strong>
+                          </span>
+                        </div>
+                        <h4 className="text-lg sm:text-xl font-bold text-[#1A1A1A]">{ad.title}</h4>
+                      </div>
+
+                      <div className="w-8 h-8 rounded-full bg-white border border-[#C08877]/40 flex items-center justify-center text-[#3B2412] shrink-0">
+                        {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      </div>
+                    </button>
+
+                    {isOpen && (
+                      <div className="px-6 pb-6 pt-2 border-t border-[#E8C4B8]/40 space-y-5">
+                        <div className="p-3 rounded-xl bg-[#FDF8F6] border border-[#E8C4B8]/60 text-xs text-[#333333]">
+                          <strong className="text-[#1A1A1A]">Pain point addressed:</strong>{' '}
+                          {ad.painPoint}
+                        </div>
+
+                        <div className="space-y-4">
+                          <div className="p-4 rounded-xl bg-white border border-[#E8C4B8]/80">
+                            <div className="flex items-center gap-2 text-xs font-bold text-[#3B2412] uppercase mb-1">
+                              <Clock className="w-3.5 h-3.5 text-[#C08877]" />
+                              <span>Hook ({ad.hook.time})</span>
+                            </div>
+                            <p className="text-base font-medium text-[#1A1A1A] italic">
+                              {ad.hook.text}
+                            </p>
+                          </div>
+
+                          <div className="p-4 rounded-xl bg-white border border-[#E8C4B8]/80">
+                            <div className="flex items-center gap-2 text-xs font-bold text-[#3B2412] uppercase mb-1">
+                              <Clock className="w-3.5 h-3.5 text-[#C08877]" />
+                              <span>Problem ({ad.problem.time})</span>
+                            </div>
+                            <p className="text-sm text-[#333333] leading-relaxed">
+                              {ad.problem.text}
+                            </p>
+                          </div>
+
+                          <div className="p-4 rounded-xl bg-white border border-[#E8C4B8]/80">
+                            <div className="flex items-center gap-2 text-xs font-bold text-[#3B2412] uppercase mb-1">
+                              <Clock className="w-3.5 h-3.5 text-[#C08877]" />
+                              <span>Unique Angle ({ad.uniqueAngle.time})</span>
+                            </div>
+                            <p className="text-sm text-[#333333] leading-relaxed">
+                              {ad.uniqueAngle.text}
+                            </p>
+                          </div>
+
+                          <div className="p-4 rounded-xl bg-white border border-[#E8C4B8]/80">
+                            <div className="flex items-center gap-2 text-xs font-bold text-[#3B2412] uppercase mb-1">
+                              <Clock className="w-3.5 h-3.5 text-[#C08877]" />
+                              <span>Call to Action ({ad.cta.time})</span>
+                            </div>
+                            <p className="text-sm font-semibold text-[#1A1A1A] leading-relaxed">
+                              {ad.cta.text}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#C08877] shadow-2xs">
+                          <h5 className="text-xs font-bold uppercase tracking-wider text-[#3B2412] mb-1 flex items-center gap-1.5">
+                            <Lightbulb className="w-3.5 h-3.5 text-[#C08877]" />
+                            Why It Works (Copywriter Analysis)
+                          </h5>
+                          <p className="text-xs sm:text-sm text-[#333333] leading-relaxed">
+                            {ad.whyItWorks}
+                          </p>
+                        </div>
+
+                        <div className="flex justify-end pt-2">
+                          <button
+                            onClick={() => handleCopy(ad.id, fullAdText)}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#C08877]/40 bg-white text-xs font-semibold text-[#3B2412] hover:bg-[#FDF8F6] transition-colors"
+                          >
+                            {copiedId === ad.id ? (
+                              <>
+                                <Check className="w-3.5 h-3.5 text-green-700" />
+                                <span>Copied to Clipboard</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="w-3.5 h-3.5 text-[#C08877]" />
+                                <span>Copy Ad Script</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* TAB 2: EMAILS */}
+        {activeTab === 'emails' && (
+          <div className="space-y-6">
+            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#3B2412] mb-2">
+                <Mail className="w-4 h-4 text-[#C08877]" />
+                <span>Clearwell Dermatology — 7-Email Conversion Sequence</span>
+              </div>
+              <h4 className="text-xl sm:text-2xl font-serif-heading font-bold text-[#1A1A1A] mb-3">
+                Problem-Aware to Offer-Aware Nurture Funnel
+              </h4>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs pt-3 border-t border-[#E8C4B8]/40">
+                <div>
+                  <span className="font-bold text-[#1A1A1A]">Audience:</span>
+                  <p className="text-[#333333] mt-0.5">
+                    Warm traffic, adults 20–30, tired of OTC cycles & MedSpa upsell pitches.
+                  </p>
+                </div>
+                <div>
+                  <span className="font-bold text-[#1A1A1A]">Tone & Arc:</span>
+                  <p className="text-[#333333] mt-0.5">
+                    Conversational, non-clinical, trust-before-offer (offer withheld until Email 5).
+                  </p>
+                </div>
+                <div>
+                  <span className="font-bold text-[#1A1A1A]">Primary CTA:</span>
+                  <p className="text-[#333333] mt-0.5">
+                    Book $199 diagnostic session (100% credited toward full package).
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {EMAILS_DATA.map((email) => {
+                const isOpen = !!openEmails[email.id];
+                const fullEmailText = `${email.stage}\nSubject: ${email.subject}${email.previewText ? `\nPreview: ${email.previewText}` : ''}\n\n${email.body.join('\n\n')}\n\n${email.signoff || ''}`;
+
+                return (
+                  <div
+                    key={email.id}
+                    className={`rounded-2xl border transition-all duration-200 overflow-hidden shadow-xs ${
+                      isOpen
+                        ? 'bg-white border-[#C08877] shadow-sm'
+                        : 'bg-[#FDF8F6] border-[#E8C4B8]/70 hover:border-[#C08877]'
+                    }`}
+                  >
+                    <button
+                      onClick={() => toggleEmail(email.id)}
+                      className="w-full px-6 py-5 flex items-start sm:items-center justify-between text-left gap-4"
+                      aria-expanded={isOpen}
+                    >
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="px-2.5 py-0.5 rounded-full bg-[#3B2412] text-white text-[11px] font-bold">
+                            Email {email.number}
+                          </span>
+                          <span className="text-xs font-semibold text-[#C08877]">
+                            {email.stage.split('–')[1] || email.stage}
+                          </span>
+                        </div>
+                        <h4 className="text-base sm:text-lg font-bold text-[#1A1A1A]">
+                          Subject:{' '}
+                          <span className="font-mono text-[#3B2412]">{email.subject}</span>
+                        </h4>
+                        {email.previewText && (
+                          <p className="text-xs text-[#333333]/70 mt-0.5 italic">
+                            Preview: {email.previewText}
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="w-8 h-8 rounded-full bg-white border border-[#C08877]/40 flex items-center justify-center text-[#3B2412] shrink-0">
+                        {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      </div>
+                    </button>
+
+                    {isOpen && (
+                      <div className="px-6 pb-6 pt-2 border-t border-[#E8C4B8]/40 space-y-4">
+                        <div className="p-5 rounded-xl bg-[#FDF8F6] border border-[#E8C4B8]/60 space-y-3 font-sans text-sm text-[#333333] leading-relaxed">
+                          {email.body.map((para, idx) => (
+                            <p key={idx}>{para}</p>
+                          ))}
+                          {email.signoff && (
+                            <p className="font-semibold text-[#1A1A1A] pt-2">{email.signoff}</p>
+                          )}
+                        </div>
+
+                        <div className="flex justify-end">
+                          <button
+                            onClick={() => handleCopy(email.id, fullEmailText)}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#C08877]/40 bg-white text-xs font-semibold text-[#3B2412] hover:bg-[#FDF8F6] transition-colors"
+                          >
+                            {copiedId === email.id ? (
+                              <>
+                                <Check className="w-3.5 h-3.5 text-green-700" />
+                                <span>Copied to Clipboard</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="w-3.5 h-3.5 text-[#C08877]" />
+                                <span>Copy Email</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#FDF8F6] border-l-4 border-[#C08877] shadow-xs">
+              <h5 className="text-xs font-bold uppercase tracking-wider text-[#3B2412] mb-2 flex items-center gap-1.5">
+                <Lightbulb className="w-4 h-4 text-[#C08877]" />
+                Copywriter's Strategic Breakdown
+              </h5>
+              <p className="text-sm text-[#333333] leading-relaxed">{EMAIL_COPYWRITER_NOTE}</p>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 3: VSL */}
+        {activeTab === 'vsl' && (
+          <div className="space-y-6">
+            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#3B2412] mb-2">
+                <Video className="w-4 h-4 text-[#C08877]" />
+                <span>Clearwell Dermatology — Full Video Sales Letter</span>
+              </div>
+              <h4 className="text-2xl font-serif-heading font-bold text-[#1A1A1A] mb-2">
+                "The Skin Barrier Truth" (6–9 Minute Script)
+              </h4>
+              <p className="text-sm text-[#333333] leading-relaxed">
+                A 6–9 minute video sales letter for Clearwell Dermatology's acne treatment program,
+                built around barrier-repair positioning and a zero-upsell guarantee to convert
+                skeptical, treatment-fatigued adults burned by rushed visits and pushy MedSpa sales.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {VSL_SECTIONS.map((section) => {
+                const isOpen = !!openVsl[section.number];
+                const sectionText = `${section.title}\n\n${section.paragraphs.join('\n\n')}`;
+
+                return (
+                  <div
+                    key={section.number}
+                    className={`rounded-2xl border transition-all duration-200 overflow-hidden shadow-xs ${
+                      isOpen
+                        ? 'bg-white border-[#C08877] shadow-sm'
+                        : 'bg-[#FDF8F6] border-[#E8C4B8]/70 hover:border-[#C08877]'
+                    }`}
+                  >
+                    <button
+                      onClick={() => toggleVsl(section.number)}
+                      className="w-full px-6 py-5 flex items-center justify-between text-left gap-4"
+                      aria-expanded={isOpen}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="w-7 h-7 rounded-full bg-[#3B2412] text-white flex items-center justify-center text-xs font-bold shrink-0">
+                          {section.number}
+                        </span>
+                        <h4 className="text-base sm:text-lg font-bold text-[#1A1A1A]">
+                          {section.title}
+                        </h4>
+                      </div>
+
+                      <div className="w-8 h-8 rounded-full bg-white border border-[#C08877]/40 flex items-center justify-center text-[#3B2412] shrink-0">
+                        {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      </div>
+                    </button>
+
+                    {isOpen && (
+                      <div className="px-6 pb-6 pt-2 border-t border-[#E8C4B8]/40 space-y-4">
+                        <div className="p-5 rounded-xl bg-[#FDF8F6] border border-[#E8C4B8]/60 space-y-3 text-sm text-[#333333] leading-relaxed">
+                          {section.paragraphs.map((p, pIdx) => (
+                            <p key={pIdx}>{p}</p>
+                          ))}
+                          {section.callout && (
+                            <div className="p-3 rounded-lg bg-white border border-[#C08877]/30 text-xs italic text-[#3B2412] font-medium mt-2">
+                              {section.callout}
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="flex justify-end">
+                          <button
+                            onClick={() => handleCopy(`vsl-${section.number}`, sectionText)}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#C08877]/40 bg-white text-xs font-semibold text-[#3B2412] hover:bg-[#FDF8F6] transition-colors"
+                          >
+                            {copiedId === `vsl-${section.number}` ? (
+                              <>
+                                <Check className="w-3.5 h-3.5 text-green-700" />
+                                <span>Copied to Clipboard</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="w-3.5 h-3.5 text-[#C08877]" />
+                                <span>Copy Section</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#FDF8F6] border-l-4 border-[#C08877] shadow-xs">
+              <h5 className="text-xs font-bold uppercase tracking-wider text-[#3B2412] mb-3 flex items-center gap-1.5">
+                <Video className="w-4 h-4 text-[#C08877]" />
+                Director & Production Execution Notes (Runtime: {VSL_PRODUCTION_NOTES.runtime})
+              </h5>
+              <ul className="space-y-2 text-sm text-[#333333]">
+                {VSL_PRODUCTION_NOTES.points.map((pt, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="text-[#C08877] font-bold">•</span>
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function RevenueCalculator() {
+  const consultsInputId = useId();
+  const packageValInputId = useId();
+  const bookingRateInputId = useId();
+
+  const [currency, setCurrency] = useState<'USD' | 'PKR'>('USD');
+  const [monthlyConsults, setMonthlyConsults] = useState<number>(30);
+  const [usdPackageValue, setUsdPackageValue] = useState<number>(800);
+  const [pkrPackageValue, setPkrPackageValue] = useState<number>(45000);
+  const [currentBookingRate, setCurrentBookingRate] = useState<number>(25);
+
+  const currentPackageValue = currency === 'USD' ? usdPackageValue : pkrPackageValue;
+  const currencySymbol = currency === 'USD' ? '$' : '₨';
+
+  const liftPercentage = 15;
+  const extraPatientsPerMonth = (monthlyConsults * liftPercentage) / 100;
+  const monthlyRecoverableRevenue = extraPatientsPerMonth * currentPackageValue;
+  const annualizedOpportunity = monthlyRecoverableRevenue * 12;
+
+  const formatCurrency = (val: number) => {
+    return `${currencySymbol}${Math.round(val).toLocaleString()}`;
+  };
+
+  return (
+    <section id="calculator" className="py-20 md:py-28 bg-[#FDF8F6]/80 border-b border-[#E8C4B8]/40">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#C08877]/40 text-xs font-semibold uppercase tracking-wider text-[#3B2412] mb-3 shadow-xs">
+            <Calculator className="w-3.5 h-3.5 text-[#3B2412]" />
+            <span>Interactive ROI Diagnostic</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-heading font-bold text-[#1A1A1A] leading-tight mb-4">
+            How Much Is Bad Copy Costing You?
+          </h2>
+
+          <p className="text-base sm:text-lg text-[#333333] leading-relaxed">
+            Most clinics don't realize how much revenue leaks out between consult and booked
+            treatment. Find out your number below.
+          </p>
+        </div>
+
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex p-1 rounded-full bg-white border border-[#C08877]/40 shadow-xs">
+            <button
+              onClick={() => setCurrency('USD')}
+              type="button"
+              className={`px-6 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-150 ${
+                currency === 'USD'
+                  ? 'bg-[#3B2412] text-white shadow-xs'
+                  : 'text-[#333333] hover:text-[#3B2412]'
+              }`}
+            >
+              USD ($)
+            </button>
+            <button
+              onClick={() => setCurrency('PKR')}
+              type="button"
+              className={`px-6 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-150 ${
+                currency === 'PKR'
+                  ? 'bg-[#3B2412] text-white shadow-xs'
+                  : 'text-[#333333] hover:text-[#3B2412]'
+              }`}
+            >
+              PKR (₨)
+            </button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <div className="lg:col-span-7 bg-white rounded-2xl border border-[#C08877]/50 p-6 sm:p-8 shadow-xs flex flex-col justify-between space-y-6">
+            <div className="space-y-6">
+              <div>
+                <div className="flex justify-between items-center mb-2">
+                  <label htmlFor={consultsInputId} className="text-sm font-bold text-[#1A1A1A]">
+                    Monthly Consultations
+                  </label>
+                  <span className="px-3 py-1 rounded-lg bg-[#FDF8F6] border border-[#C08877]/40 text-sm font-bold text-[#3B2412]">
+                    {monthlyConsults} consults
+                  </span>
+                </div>
+                <input
+                  id={consultsInputId}
+                  type="range"
+                  min="5"
+                  max="200"
+                  step="1"
+                  value={monthlyConsults}
+                  onChange={(e) => setMonthlyConsults(Number(e.target.value))}
+                  className="w-full h-2 bg-[#E8C4B8]/50 rounded-lg appearance-none cursor-pointer accent-[#3B2412]"
+                />
+                <div className="flex justify-between text-[11px] text-[#333333]/60 mt-1">
+                  <span>5 consults</span>
+                  <span>100</span>
+                  <span>200 consults/mo</span>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center mb-2">
+                  <label htmlFor={packageValInputId} className="text-sm font-bold text-[#1A1A1A]">
+                    Average Treatment Package Value
+                  </label>
+                  <span className="px-3 py-1 rounded-lg bg-[#FDF8F6] border border-[#C08877]/40 text-sm font-bold text-[#3B2412]">
+                    {formatCurrency(currentPackageValue)}
+                  </span>
+                </div>
+                {currency === 'USD' ? (
+                  <input
+                    id={packageValInputId}
+                    type="range"
+                    min="100"
+                    max="3000"
+                    step="50"
+                    value={usdPackageValue}
+                    onChange={(e) => setUsdPackageValue(Number(e.target.value))}
+                    className="w-full h-2 bg-[#E8C4B8]/50 rounded-lg appearance-none cursor-pointer accent-[#3B2412]"
+                  />
+                ) : (
+                  <input
+                    id={packageValInputId}
+                    type="range"
+                    min="5000"
+                    max="150000"
+                    step="2500"
+                    value={pkrPackageValue}
+                    onChange={(e) => setPkrPackageValue(Number(e.target.value))}
+                    className="w-full h-2 bg-[#E8C4B8]/50 rounded-lg appearance-none cursor-pointer accent-[#3B2412]"
+                  />
+                )}
+                <div className="flex justify-between text-[11px] text-[#333333]/60 mt-1">
+                  <span>{currency === 'USD' ? '$100' : '₨5,000'}</span>
+                  <span>{currency === 'USD' ? '$1,500' : '₨75,000'}</span>
+                  <span>{currency === 'USD' ? '$3,000' : '₨150,000'}</span>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center mb-2">
+                  <label htmlFor={bookingRateInputId} className="text-sm font-bold text-[#1A1A1A]">
+                    Current Consult-to-Booking Rate
+                  </label>
+                  <span className="px-3 py-1 rounded-lg bg-[#FDF8F6] border border-[#C08877]/40 text-sm font-bold text-[#3B2412]">
+                    {currentBookingRate}%
+                  </span>
+                </div>
+                <input
+                  id={bookingRateInputId}
+                  type="range"
+                  min="5"
+                  max="80"
+                  step="1"
+                  value={currentBookingRate}
+                  onChange={(e) => setCurrentBookingRate(Number(e.target.value))}
+                  className="w-full h-2 bg-[#E8C4B8]/50 rounded-lg appearance-none cursor-pointer accent-[#3B2412]"
+                />
+                <div className="flex justify-between text-[11px] text-[#333333]/60 mt-1">
+                  <span>5% (Cold)</span>
+                  <span>40% (Average)</span>
+                  <span>80% (High)</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#C08877] flex items-center justify-between">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#333333]/80">
+                  Target Conversion Improvement
+                </span>
+                <p className="text-xs text-[#333333] mt-0.5">
+                  Conservative lift via pre-sell VSL & follow-up sequence
+                </p>
+              </div>
+              <span className="text-base sm:text-lg font-bold text-[#3B2412]">
+                +15% Booking Lift
+              </span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 rounded-2xl bg-white border-2 border-[#C08877] p-6 sm:p-8 shadow-sm flex flex-col justify-between relative overflow-hidden">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <TrendingUp className="w-4 h-4 text-[#C08877]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[#C08877]">
+                  Estimated Revenue Recovery
+                </span>
+              </div>
+
+              <div className="mt-4 mb-6">
+                <span className="text-xs text-[#333333]/80 font-medium block">
+                  Monthly Recoverable Revenue:
+                </span>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-serif-heading font-bold text-[#3B2412] tracking-tight mt-1">
+                  {formatCurrency(monthlyRecoverableRevenue)}{' '}
+                  <span className="text-base font-sans font-normal text-[#333333]/70">/ mo</span>
+                </div>
+              </div>
+
+              <div className="h-px w-full bg-[#E8C4B8]/60 my-6" />
+
+              <div className="space-y-4">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-[#333333] flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-[#C08877]" />
+                    Annualized Opportunity:
+                  </span>
+                  <span className="font-bold text-[#1A1A1A]">
+                    {formatCurrency(annualizedOpportunity)} / yr
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-[#333333] flex items-center gap-2">
+                    <Users className="w-4 h-4 text-[#C08877]" />
+                    Extra Patients Booked:
+                  </span>
+                  <span className="font-bold text-[#3B2412]">
+                    +{extraPatientsPerMonth.toFixed(1)} patients / mo
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 pt-4">
+              <a
+                href={GMAIL_AUDIT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                id="calculator-cta-btn"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[#3B2412] text-white text-sm sm:text-base font-bold shadow-md hover:bg-[#25160b] hover:shadow-lg transition-all duration-200"
+              >
+                <span>Discuss Closing This Gap →</span>
+              </a>
+              <p className="text-[11px] text-center text-[#333333]/60 mt-2">
+                Opens directly in Gmail • Free audit tailored to your practice
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ServicesSection() {
+  return (
+    <section id="services" className="py-20 md:py-28 bg-white border-b border-[#E8C4B8]/30">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold uppercase tracking-wider text-[#3B2412] mb-3">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Specialized Direct-Response Offers</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-heading font-bold text-[#1A1A1A] leading-tight mb-4">
+            Services Built for Dermatology & Aesthetic Practices
+          </h2>
+
+          <p className="text-base sm:text-lg text-[#333333] leading-relaxed">
+            Every deliverable is crafted on clinical authority, patient psychology, and high-ticket
+            conversion principles.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {SERVICES.map((service, index) => (
+            <div
+              key={service.id}
+              className="p-8 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 hover:border-[#3B2412] shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between group"
+            >
+              <div>
+                <span className="text-xs font-bold text-[#C08877] uppercase tracking-wider block mb-1">
+                  Offer 0{index + 1}
+                </span>
+
+                <h3 className="text-2xl font-serif-heading font-bold text-[#1A1A1A] mb-2 group-hover:text-[#3B2412] transition-colors">
+                  {service.title}
+                </h3>
+
+                <p className="text-sm font-semibold text-[#3B2412] mb-6">{service.subtitle}</p>
+
+                <div className="space-y-3 mb-6">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#1A1A1A] block">
+                    What's Included:
+                  </span>
+                  {service.deliverables.map((item, dIdx) => (
+                    <div
+                      key={dIdx}
+                      className="flex items-start gap-2.5 text-xs sm:text-sm text-[#333333]"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-[#C08877] shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-white border border-[#E8C4B8]/60 text-xs text-[#333333] mb-6">
+                  <strong className="text-[#1A1A1A] block mb-1">Ideal For:</strong>
+                  {service.idealFor}
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-[#E8C4B8]/60">
+                <p className="text-xs text-[#3B2412] font-semibold mb-4">
+                  <span className="text-[#C08877]">Target Outcome:</span> {service.outcome}
+                </p>
+                <a
+                  href={GMAIL_AUDIT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-white border border-[#C08877]/60 text-xs font-bold text-[#3B2412] hover:bg-[#3B2412] hover:text-white transition-all duration-150"
+                >
+                  <span>Inquire for Your Clinic</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactSection() {
+  return (
+    <section id="contact" className="py-20 md:py-28 bg-[#FDF8F6] relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#E8C4B8]/30 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-[#D9A79C]/20 blur-3xl pointer-events-none" />
+
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#C08877]/40 text-xs font-semibold uppercase tracking-wider text-[#3B2412] mb-6 shadow-xs">
+          <Sparkles className="w-3.5 h-3.5 text-[#3B2412]" />
+          <span>Next Step</span>
+        </div>
+
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-heading font-bold text-[#1A1A1A] leading-tight mb-6">
+          Ready to stop losing booked treatments to bad copy?
+        </h2>
+
+        <p className="text-base sm:text-lg text-[#333333] max-w-2xl mx-auto leading-relaxed mb-10">
+          Let's analyze where patients are dropping off in your ads, consults, or email follow-ups.
+          I'll send you a custom breakdown of the top leaks in your patient acquisition funnel.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <a
+            href={GMAIL_AUDIT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            id="contact-audit-btn"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#3B2412] text-white text-base font-bold tracking-wide shadow-md hover:bg-[#25160b] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+          >
+            <span>Get Your Free Funnel Audit</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-12 text-left">
+          <div className="p-3.5 rounded-xl bg-white border border-[#E8C4B8]/60 flex items-center gap-2.5">
+            <Clock className="w-4 h-4 text-[#3B2412] shrink-0" />
+            <span className="text-xs font-medium text-[#1A1A1A]">Delivered in 24–48 Hours</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-white border border-[#E8C4B8]/60 flex items-center gap-2.5">
+            <ShieldCheck className="w-4 h-4 text-[#3B2412] shrink-0" />
+            <span className="text-xs font-medium text-[#1A1A1A]">100% Free & No Obligation</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-white border border-[#E8C4B8]/60 flex items-center gap-2.5">
+            <CheckCircle2 className="w-4 h-4 text-[#3B2412] shrink-0" />
+            <span className="text-xs font-medium text-[#1A1A1A]">Tailored to Your Clinic</span>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-[#E8C4B8]/60">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#333333]/70 block mb-4">
+            Direct Communication Channels
+          </span>
+
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href={GMAIL_AUDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="contact-email-btn"
+              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[#3B2412] text-white text-sm font-semibold shadow-xs hover:bg-[#25160b] hover:scale-103 transition-all duration-200"
+            >
+              <Mail className="w-4 h-4" />
+              <span>Email Me ({PERSONAL_INFO.email})</span>
+            </a>
+
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="contact-linkedin-btn"
+              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white border-2 border-[#3B2412] text-[#3B2412] text-sm font-semibold shadow-xs hover:bg-[#3B2412] hover:text-white hover:scale-103 transition-all duration-200"
+            >
+              <Linkedin className="w-4 h-4" />
+              <span>Connect on LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-white border-t border-[#E8C4B8]/40 py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#E8C4B8]/30">
+          <div className="flex items-center gap-3 text-center md:text-left">
+            <div className="w-9 h-9 rounded-full bg-[#3B2412] text-white flex items-center justify-center font-bold text-xs tracking-wider">
+              {PERSONAL_INFO.initials}
+            </div>
+            <div>
+              <span className="font-bold text-[#1A1A1A] text-base block">{PERSONAL_INFO.name}</span>
+              <span className="text-xs text-[#333333]/70">{PERSONAL_INFO.title}</span>
+            </div>
+          </div>
+
+          <nav className="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-medium text-[#333333]">
+            <a href="#home" className="hover:text-[#3B2412] transition-colors">
+              Home
+            </a>
+            <a href="#about" className="hover:text-[#3B2412] transition-colors">
+              About
+            </a>
+            <a href="#certifications" className="hover:text-[#3B2412] transition-colors">
+              Certifications
+            </a>
+            <a href="#work" className="hover:text-[#3B2412] transition-colors">
+              Work
+            </a>
+            <a href="#calculator" className="hover:text-[#3B2412] transition-colors">
+              Calculator
+            </a>
+            <a href="#services" className="hover:text-[#3B2412] transition-colors">
+              Services
+            </a>
+            <a href="#contact" className="hover:text-[#3B2412] transition-colors">
+              Contact
+            </a>
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <a
+              href={GMAIL_AUDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Email via Gmail"
+              className="w-8 h-8 rounded-full bg-[#3B2412] text-white flex items-center justify-center hover:bg-[#25160b] transition-all"
+            >
+              <Mail className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="w-8 h-8 rounded-full bg-[#3B2412] text-white flex items-center justify-center hover:bg-[#25160b] transition-all"
+            >
+              <Linkedin className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#333333]/60 text-center sm:text-left">
+          <p>
+            © {new Date().getFullYear()} {PERSONAL_INFO.name}. All rights reserved. •{' '}
+            {PERSONAL_INFO.location} • {PERSONAL_INFO.education}
+          </p>
+          <p className="flex items-center gap-1">
+            <span>Crafted for high-ticket aesthetic & dermatology conversion.</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MAIN APP EXPORT
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-white text-[#333333] flex flex-col selection:bg-[#E8C4B8] selection:text-[#1A1A1A]">
+      <Navbar />
+      <main className="flex-1">
+        <Hero />
+        <AboutProblemSolution />
+        <SkillsSection />
+        <CertificationsSection />
+        <FeaturedWork />
+        <RevenueCalculator />
+        <ServicesSection />
+        <ContactSection />
+      </main>
+      <Footer />
+    </div>
+  );
+}
