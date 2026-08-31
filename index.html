@@ -1,1062 +1,1655 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maha Saleemi — Conversion Copywriter | Dermatology & Aesthetic Clinics</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #333333;
-      background-color: #FFFFFF;
-    }
-    .font-serif-heading {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-    }
-    .watercolor-bg {
-      background: linear-gradient(135deg, #FDF8F6 0%, #F5E6E1 45%, #E8C4B8 80%, #D9A79C 100%);
-    }
-    ::selection {
-      background-color: #E8C4B8;
-      color: #1A1A1A;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maha Saleemi — Conversion Copywriter for Dermatology & Aesthetic Brands</title>
+<meta name="description" content="Maha Saleemi writes ads, Reel scripts, VSLs and email sequences for dermatology and aesthetic clinics, built to turn attention into booked appointments.">
+
+<meta property="og:title" content="Maha Saleemi — Conversion Copywriter for Dermatology & Aesthetic Brands">
+<meta property="og:description" content="Ads, Reel scripts, VSLs and email sequences that turn clinic attention into booked appointments.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
+:root {
+  --ink: #15100d;
+  --ink-soft: #1c1510;
+  --surface: #241a13;
+  --surface-hover: #2c2018;
+  --cream: #f4ebe0;
+  --beige: #d9c3a9;
+  --blush: #c99c93;
+  --blush-deep: #b47f78;
+  --terracotta: #b06d43;
+  --brown-deep: #4f3220;
+  --text-dim: #b6a998;
+  --text-faint: #8a7c6c;
+  --line: rgba(244, 235, 224, 0.14);
+  --line-strong: rgba(244, 235, 224, 0.28);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --max-width: 1120px;
+  --gutter: clamp(1.5rem, 5vw, 4rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--cream);
+  color: var(--ink);
+  padding: 0.75rem 1.25rem;
+  z-index: 200;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blush);
+  outline-offset: 3px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.12;
+  margin: 0;
+  color: var(--cream);
+}
+
+p {
+  margin: 0 0 1rem;
+  color: var(--text-dim);
+}
+
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section {
+  padding: clamp(4rem, 9vw, 7.5rem) 0;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 84px;
+}
+
+.section-heading {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  max-width: 26ch;
+}
+
+.section-lede {
+  max-width: 52ch;
+  font-size: 1.05rem;
+  margin-top: 0.9rem;
+  margin-bottom: 2.75rem;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.btn-primary {
+  background: var(--blush);
+  color: var(--ink);
+}
+
+.btn-primary:hover {
+  background: var(--cream);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--cream);
+  border-color: var(--line-strong);
+}
+
+.btn-ghost:hover {
+  border-color: var(--blush);
+  color: var(--blush);
+}
+
+/* ==========================================================================
+   Header / Nav
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(21, 16, 13, 0.86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.1rem var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  text-decoration: none;
+  color: var(--cream);
+  letter-spacing: 0.01em;
+}
+
+.primary-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.1rem;
+}
+
+.primary-nav a {
+  text-decoration: none;
+  font-size: 0.94rem;
+  color: var(--text-dim);
+  transition: color 150ms ease;
+}
+
+.primary-nav a:hover {
+  color: var(--cream);
+}
+
+.primary-nav .nav-cta {
+  color: var(--blush);
+}
+
+.nav-toggle {
+  display: none;
+  width: 34px;
+  height: 26px;
+  flex-direction: column;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 1px;
+  background: var(--cream);
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  padding: 0.5rem var(--gutter) 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.mobile-nav a {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--cream);
+  font-size: 1.05rem;
+}
+
+.mobile-nav.is-open {
+  display: flex;
+}
+
+@media (max-width: 860px) {
+  .primary-nav {
+    display: none;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  position: relative;
+  padding: clamp(5rem, 13vw, 9.5rem) var(--gutter) clamp(4rem, 9vw, 6.5rem);
+  overflow: hidden;
+}
+
+.hero-field {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 55% at 82% 8%, rgba(201, 156, 147, 0.16), transparent 60%),
+    radial-gradient(ellipse 50% 45% at 8% 95%, rgba(176, 109, 67, 0.14), transparent 60%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.hero-kicker {
+  font-size: 0.98rem;
+  color: var(--blush);
+  margin-bottom: 1.4rem;
+  max-width: 34ch;
+}
+
+.hero-title {
+  font-size: clamp(2.6rem, 6.4vw, 4.6rem);
+  max-width: 16ch;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--beige);
+}
+
+.hero-sub {
+  margin-top: 1.75rem;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  max-width: 56ch;
+  color: var(--text-dim);
+}
+
+.hero-services {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-faint);
+}
+
+.hero-actions {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   About
+   ========================================================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.about-lede h2 {
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  position: sticky;
+  top: 7rem;
+}
+
+.about-body p {
+  font-size: 1.05rem;
+}
+
+.about-caveat {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--text-faint);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 780px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-lede h2 {
+    position: static;
+  }
+}
+
+/* ==========================================================================
+   Services
+   ========================================================================== */
+.services-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding: 2.25rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.service-row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.service-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--blush);
+}
+
+.service-copy h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.service-copy p {
+  max-width: 62ch;
+}
+
+@media (max-width: 640px) {
+  .service-row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+}
+
+.flow-diagram {
+  margin-top: 3.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--beige);
+}
+
+.flow-arrow {
+  color: var(--text-faint);
+  font-style: normal;
+}
+
+/* ==========================================================================
+   Framework
+   ========================================================================== */
+.framework-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.framework-stage {
+  padding: 2.5rem 2rem;
+  border-left: 1px solid var(--line);
+}
+
+.framework-stage:first-child {
+  border-left: none;
+}
+
+.framework-stage:nth-child(1) {
+  background: linear-gradient(180deg, rgba(201, 156, 147, 0.07), transparent);
+}
+
+.framework-stage:nth-child(2) {
+  background: linear-gradient(180deg, rgba(217, 195, 169, 0.07), transparent);
+}
+
+.framework-stage:nth-child(3) {
+  background: linear-gradient(180deg, rgba(176, 109, 67, 0.09), transparent);
+}
+
+.framework-stage h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.9rem;
+  font-style: italic;
+}
+
+@media (max-width: 780px) {
+  .framework-track {
+    grid-template-columns: 1fr;
+  }
+  .framework-stage {
+    border-left: none;
+    border-top: 1px solid var(--line);
+  }
+  .framework-stage:first-child {
+    border-top: none;
+  }
+}
+
+/* ==========================================================================
+   Portfolio / Spec work
+   ========================================================================== */
+.filter-bar {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.75rem;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--text-dim);
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.filter-btn:hover {
+  color: var(--cream);
+  border-color: var(--beige);
+}
+
+.filter-btn.is-active {
+  background: var(--beige);
+  color: var(--ink);
+  border-color: var(--beige);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.75rem;
+}
+
+.portfolio-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.portfolio-card:hover {
+  border-color: var(--blush-deep);
+  background: var(--surface-hover);
+}
+
+.portfolio-card.is-hidden {
+  display: none;
+}
+
+.card-type {
+  font-size: 0.82rem;
+  color: var(--blush);
+  margin-bottom: 0.9rem;
+}
+
+.portfolio-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-card p {
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.card-view-btn {
+  align-self: flex-start;
+  margin-top: 1.25rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--beige);
+  color: var(--beige);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  padding: 0 0 2px;
+  cursor: pointer;
+}
+
+.card-view-btn:hover {
+  color: var(--cream);
+  border-color: var(--cream);
+}
+
+/* ==========================================================================
+   Modal
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 7, 5, 0.78);
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 4rem) 1rem;
+  z-index: 300;
+  overflow-y: auto;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+}
+
+.modal-panel {
+  position: relative;
+  background: var(--ink-soft);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  max-width: 760px;
+  width: 100%;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.9rem;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.9rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.modal-close:hover {
+  color: var(--cream);
+}
+
+.modal-scroll {
+  overflow-y: auto;
+  padding: 3rem clamp(1.5rem, 4vw, 3rem) 3rem;
+}
+
+.modal-eyebrow {
+  color: var(--blush);
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+
+.modal-panel h3 {
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  margin-bottom: 0.9rem;
+}
+
+.modal-desc {
+  font-size: 1rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.modal-body h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--beige);
+  margin: 2rem 0 0.5rem;
+}
+
+.modal-body h4:first-child {
+  margin-top: 0;
+}
+
+.modal-body p {
+  font-size: 0.98rem;
+}
+
+.modal-body .piece-block {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.modal-body .piece-block:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.modal-body .piece-label {
+  font-size: 0.8rem;
+  text-transform: none;
+  color: var(--text-faint);
+  margin-bottom: 0.3rem;
+}
+
+.modal-body .piece-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--cream);
+  margin-bottom: 0.75rem;
+}
+
+.modal-body .why-note {
+  margin-top: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  background: rgba(217, 195, 169, 0.06);
+  border-left: 2px solid var(--terracotta);
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+/* ==========================================================================
+   Calculator
+   ========================================================================== */
+.calc-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: clamp(1.75rem, 4vw, 3rem);
+}
+
+.calc-currency-toggle {
+  display: inline-flex;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 3px;
+  margin-bottom: 2.25rem;
+}
+
+.currency-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem 1.15rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.currency-btn.is-active {
+  background: var(--blush);
+  color: var(--ink);
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.calc-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.calc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.calc-field-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.calc-field-head label {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.calc-value {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--blush);
+  white-space: nowrap;
+}
+
+.calc-field input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 22px;
+  background: transparent;
+  cursor: pointer;
+  --fill-percent: 50%;
+}
+
+.calc-field input[type="range"]:focus {
+  outline: none;
+}
+
+.calc-field input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    var(--blush) 0%,
+    var(--blush) var(--fill-percent),
+    var(--line-strong) var(--fill-percent),
+    var(--line-strong) 100%
+  );
+}
+
+.calc-field input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+
+.calc-field input[type="range"]::-moz-range-progress {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--blush);
+}
+
+.calc-field input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 3px solid var(--blush);
+  margin-top: -8px;
+  transition: transform 120ms ease, border-color 120ms ease;
+}
+
+.calc-field input[type="range"]:hover::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+
+.calc-field input[type="range"]:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--blush);
+  outline-offset: 3px;
+}
+
+.calc-field input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 3px solid var(--blush);
+  transition: transform 120ms ease;
+}
+
+.calc-field input[type="range"]:hover::-moz-range-thumb {
+  transform: scale(1.12);
+}
+
+.calc-results {
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  align-self: start;
+}
+
+.calc-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.calc-result-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.calc-result-row strong {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--cream);
+  font-weight: 500;
+}
+
+.calc-result-highlight strong {
+  color: var(--blush);
+}
+
+.calc-disclaimer {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  max-width: 68ch;
+}
+
+@media (max-width: 720px) {
+  .calc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Why work with me
+   ========================================================================== */
+.why-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+  max-width: 68ch;
+}
+
+.why-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 1.02rem;
+  color: var(--text-dim);
+}
+
+.why-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--terracotta);
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+.contact {
+  text-align: left;
+}
+
+.contact-heading {
+  font-size: clamp(2rem, 4.6vw, 3.2rem);
+  max-width: 22ch;
+  margin-bottom: 2.5rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 2.25rem 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+</style>
 </head>
-<body class="selection:bg-[#E8C4B8] selection:text-[#1A1A1A]">
+<body>
 
-  <!-- HEADER / NAVBAR -->
-  <header id="main-navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md py-3.5 border-b border-[#E8C4B8]/40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between">
-        <!-- Logo -->
-        <a href="#home" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center font-bold text-sm tracking-wider shadow-xs transition-transform duration-200 group-hover:scale-105">
-            MS
-          </div>
-          <div class="flex flex-col">
-            <span class="font-bold text-[#1A1A1A] text-lg tracking-tight leading-none group-hover:text-[#3B2412] transition-colors">
-              Maha Saleemi
-            </span>
-            <span class="text-xs text-[#333333]/70 font-medium tracking-wide mt-0.5">
-              Conversion Copywriter
-            </span>
-          </div>
-        </a>
+<a class="skip-link" href="#main">Skip to content</a>
 
-        <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center gap-7">
-          <a href="#home" class="text-sm font-medium text-[#333333] hover:text-[#3B2412] transition-colors">Home</a>
-          <a href="#about" class="text-sm font-medium text-[#333333] hover:text-[#3B2412] transition-colors">About</a>
-          <a href="#certifications" class="text-sm font-medium text-[#333333] hover:text-[#3B2412] transition-colors">Certifications</a>
-          <a href="#work" class="text-sm font-medium text-[#333333] hover:text-[#3B2412] transition-colors">Work</a>
-          <a href="#calculator" class="text-sm font-medium text-[#333333] hover:text-[#3B2412] transition-colors">Calculator</a>
-          <a href="#services" class="text-sm font-medium text-[#333333] hover:text-[#3B2412] transition-colors">Services</a>
-          <a href="#contact" class="text-sm font-medium text-[#333333] hover:text-[#3B2412] transition-colors">Contact</a>
-        </nav>
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#home" class="wordmark">Maha Saleemi</a>
 
-        <!-- Social & Direct Gmail Buttons -->
-        <div class="hidden sm:flex items-center gap-3">
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mahasaleemi053@gmail.com&su=Free%20Funnel%20Audit%20Request&body=Hi%20Maha%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20learn%20more%20about%20how%20you%20can%20help%20improve%20our%20clinic%27s%20conversions.%0A%0AClinic%2FBusiness%20Name%3A%20%0AWebsite%2FSocial%20Link%3A%20%0A%0ALooking%20forward%20to%20hearing%20from%20you!" target="_blank" rel="noopener noreferrer" title="Email via Gmail" class="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center transition-all duration-200 hover:bg-[#25160b] hover:scale-105 shadow-xs">
-            <i data-lucide="mail" class="w-4 h-4"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/maha-s-7bb503419" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" class="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center transition-all duration-200 hover:bg-[#25160b] hover:scale-105 shadow-xs">
-            <i data-lucide="linkedin" class="w-4 h-4"></i>
-          </a>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mahasaleemi053@gmail.com&su=Free%20Funnel%20Audit%20Request&body=Hi%20Maha%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20learn%20more%20about%20how%20you%20can%20help%20improve%20our%20clinic%27s%20conversions.%0A%0AClinic%2FBusiness%20Name%3A%20%0AWebsite%2FSocial%20Link%3A%20%0A%0ALooking%20forward%20to%20hearing%20from%20you!" target="_blank" rel="noopener noreferrer" class="hidden lg:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#3B2412] text-white text-xs font-semibold tracking-wide uppercase transition-all duration-200 hover:bg-[#25160b] shadow-xs">
-            <span>Audit</span>
-            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#framework">Framework</a>
+      <a href="#work">Spec Work</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
 
-        <!-- Mobile Menu Button -->
-        <div class="flex md:hidden items-center gap-2">
-          <button id="mobileMenuBtn" class="p-2 rounded-lg text-[#3B2412] hover:bg-[#FDF8F6] focus:outline-none">
-            <i data-lucide="menu" class="w-6 h-6"></i>
-          </button>
-        </div>
-      </div>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 
-      <!-- Mobile Dropdown -->
-      <div id="mobileMenu" class="hidden md:hidden pt-4 pb-2 border-t border-[#E8C4B8]/40 mt-3 flex flex-col gap-2">
-        <a href="#home" class="px-3 py-2 text-base font-medium text-[#1A1A1A] hover:bg-[#FDF8F6] rounded-lg">Home</a>
-        <a href="#about" class="px-3 py-2 text-base font-medium text-[#1A1A1A] hover:bg-[#FDF8F6] rounded-lg">About</a>
-        <a href="#certifications" class="px-3 py-2 text-base font-medium text-[#1A1A1A] hover:bg-[#FDF8F6] rounded-lg">Certifications</a>
-        <a href="#work" class="px-3 py-2 text-base font-medium text-[#1A1A1A] hover:bg-[#FDF8F6] rounded-lg">Work</a>
-        <a href="#calculator" class="px-3 py-2 text-base font-medium text-[#1A1A1A] hover:bg-[#FDF8F6] rounded-lg">Calculator</a>
-        <a href="#services" class="px-3 py-2 text-base font-medium text-[#1A1A1A] hover:bg-[#FDF8F6] rounded-lg">Services</a>
-        <a href="#contact" class="px-3 py-2 text-base font-medium text-[#1A1A1A] hover:bg-[#FDF8F6] rounded-lg">Contact</a>
-        <div class="pt-3 border-t border-[#E8C4B8]/40">
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mahasaleemi053@gmail.com&su=Free%20Funnel%20Audit%20Request" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[#3B2412] text-white text-sm font-semibold">
-            <i data-lucide="mail" class="w-4 h-4"></i> Book Free Audit (Gmail)
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#framework">Framework</a>
+    <a href="#work">Spec Work</a>
+    <a href="#calculator">Calculator</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
 
-  <!-- HERO SECTION -->
-  <section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden watercolor-bg">
-    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-xs border border-[#C08877]/40 shadow-xs mb-8">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#3B2412]"></i>
-        <span class="text-xs sm:text-sm font-semibold tracking-wide text-[#3B2412] uppercase">
-          Conversion Copywriting for Dermatology & Aesthetic Clinics
-        </span>
-      </div>
+<main id="main">
 
-      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif-heading font-bold text-[#1A1A1A] leading-[1.1] tracking-tight mb-6">
-        They click. They visit. They book. <br class="hidden sm:inline" />
-        <span class="italic font-normal text-[#3B2412]">Then they vanish.</span>
-      </h1>
-
-      <p class="text-lg sm:text-xl md:text-2xl text-[#1A1A1A]/90 max-w-3xl mx-auto font-medium leading-relaxed mb-10">
-        15–20% more treatment appointments in 30 days — <span class="font-semibold text-[#3B2412]">No discounts, no manual chasing</span>
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mahasaleemi053@gmail.com&su=Free%20Funnel%20Audit%20Request" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#3B2412] text-white text-base font-semibold tracking-wide shadow-md hover:bg-[#25160b] hover:shadow-lg transition-all duration-200">
-          <span>Book a Free Audit</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-        <a href="#work" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white/90 text-[#3B2412] text-base font-semibold border border-[#C08877]/60 hover:bg-white transition-colors duration-200 shadow-xs">
-          <span>View Featured Campaign</span>
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto pt-6 border-t border-[#C08877]/30 text-left">
-        <div class="flex items-center gap-2.5 bg-white/60 backdrop-blur-xs p-3 rounded-xl border border-white/60">
-          <i data-lucide="check-circle" class="w-4 h-4 text-[#3B2412] shrink-0"></i>
-          <span class="text-xs sm:text-sm font-medium text-[#1A1A1A]">Pre-Qualify Patients Before Click</span>
-        </div>
-        <div class="flex items-center gap-2.5 bg-white/60 backdrop-blur-xs p-3 rounded-xl border border-white/60">
-          <i data-lucide="shield" class="w-4 h-4 text-[#3B2412] shrink-0"></i>
-          <span class="text-xs sm:text-sm font-medium text-[#1A1A1A]">Disarm MedSpa Upsell Trauma</span>
-        </div>
-        <div class="flex items-center gap-2.5 bg-white/60 backdrop-blur-xs p-3 rounded-xl border border-white/60">
-          <i data-lucide="check-circle" class="w-4 h-4 text-[#3B2412] shrink-0"></i>
-          <span class="text-xs sm:text-sm font-medium text-[#1A1A1A]">Recover Unbooked Consultations</span>
-        </div>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-field" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-kicker">Conversion copywriter for dermatology &amp; aesthetic brands</p>
+      <h1 class="hero-title">Attention isn't the goal.<br><em>Conversion is.</em></h1>
+      <p class="hero-sub">I write the ads, Reel scripts, VSLs and email sequences that carry a patient from the first scroll to a booked appointment, for clinics whose content already gets attention but whose calendar doesn't show it.</p>
+      <p class="hero-services">Ads / Reel Scripts / VSLs / Email Sequences</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">View my work</a>
+        <a href="mailto:mahasaleemi053@gmail.com" class="btn btn-ghost">Let's work together</a>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT & DIAGNOSIS -->
-  <section id="about" class="py-20 md:py-28 bg-white border-b border-[#E8C4B8]/30">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto text-center mb-16">
-        <div class="inline-block px-3.5 py-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold uppercase tracking-wider text-[#3B2412] mb-4">
-          The Diagnosis & Core Promise
-        </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif-heading font-bold text-[#1A1A1A] leading-tight mb-6">
-          Dermatology clinic or aesthetic practice doing 6–7 figures/month? <br class="hidden sm:inline"/>
-          <span class="italic text-[#3B2412]">If your consults are up but bookings aren't, here's why.</span>
-        </h2>
-
-        <div class="p-6 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 shadow-xs text-left my-8">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center shrink-0 mt-1">
-              <i data-lucide="alert-circle" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <h3 class="text-lg font-bold text-[#1A1A1A] mb-1">The Traffic Myth vs. The Reality</h3>
-              <p class="text-[#333333] text-sm sm:text-base leading-relaxed">
-                Your agency tells you to spend more on paid ads. But running more traffic into a leaky funnel doesn't fix conversion; it just inflates your cost per acquired patient. The real bottleneck is what happens between their initial click and their first in-clinic treatment.
-              </p>
-            </div>
-          </div>
-        </div>
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="section-inner about-grid">
+      <div class="about-lede">
+        <h2>Most clinics don't have an attention problem.</h2>
       </div>
-
-      <!-- 3-Phase Conversion Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16">
-        <div class="p-7 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 hover:border-[#3B2412] transition-colors duration-200 flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-[#3B2412] text-white flex items-center justify-center mb-5 font-serif-heading font-bold text-xl">1</div>
-            <h4 class="text-xl font-bold text-[#1A1A1A] mb-3 flex items-center gap-2">
-              <i data-lucide="filter" class="w-5 h-5 text-[#3B2412]"></i>
-              <span>Pre-qualify</span>
-            </h4>
-            <p class="text-sm font-semibold text-[#3B2412] mb-3">In the ad, before they ever click.</p>
-            <p class="text-sm text-[#333333] leading-relaxed">
-              Most clinic ads target discount-seekers. We write ads that filter for patients with genuine clinical intent, disarming skepticism before they hit your landing page.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-[#E8C4B8]/60 text-xs text-[#333333]/80 font-medium">
-            Target: High-ticket patient intent
-          </div>
-        </div>
-
-        <div class="p-7 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 hover:border-[#3B2412] transition-colors duration-200 flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-[#3B2412] text-white flex items-center justify-center mb-5 font-serif-heading font-bold text-xl">2</div>
-            <h4 class="text-xl font-bold text-[#1A1A1A] mb-3 flex items-center gap-2">
-              <i data-lucide="file-text" class="w-5 h-5 text-[#3B2412]"></i>
-              <span>Pre-sell</span>
-            </h4>
-            <p class="text-sm font-semibold text-[#3B2412] mb-3">On the landing page & VSL before the visit.</p>
-            <p class="text-sm text-[#333333] leading-relaxed">
-              We dismantle the top blocker in aesthetic medicine: fear of high-pressure upsells. Patients show up educated on the mechanism, trusting your medical authority.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-[#E8C4B8]/60 text-xs text-[#333333]/80 font-medium">
-            Target: 0% consult resistance
-          </div>
-        </div>
-
-        <div class="p-7 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 hover:border-[#3B2412] transition-colors duration-200 flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-[#3B2412] text-white flex items-center justify-center mb-5 font-serif-heading font-bold text-xl">3</div>
-            <h4 class="text-xl font-bold text-[#1A1A1A] mb-3 flex items-center gap-2">
-              <i data-lucide="refresh-cw" class="w-5 h-5 text-[#3B2412]"></i>
-              <span>Win back</span>
-            </h4>
-            <p class="text-sm font-semibold text-[#3B2412] mb-3">The unbooked consults on autopilot.</p>
-            <p class="text-sm text-[#333333] leading-relaxed">
-              When a patient leaves saying "I need to think about it," our automated email sequence follows up with reassurance, proof timelines, and unobtrusive objection handling.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-[#E8C4B8]/60 text-xs text-[#333333]/80 font-medium">
-            Target: +15–20% recovered bookings
-          </div>
-        </div>
-      </div>
-
-      <!-- Identity Card -->
-      <div class="p-8 sm:p-10 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/60 shadow-xs">
-        <div class="flex flex-col md:flex-row items-center gap-6 justify-between">
-          <div class="flex items-center gap-5">
-            <div class="w-16 h-16 rounded-full bg-[#3B2412] text-white flex items-center justify-center font-bold text-xl tracking-wider shrink-0 shadow-sm">
-              MS
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-[#1A1A1A] mb-1">Maha Saleemi</h4>
-              <p class="text-sm text-[#3B2412] font-semibold mb-2">Conversion Copywriter for Aesthetic & Dermatology Clinics</p>
-              <div class="flex flex-wrap gap-4 text-xs text-[#333333]">
-                <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#3B2412]"></i> Islamabad, Pakistan</span>
-                <span class="flex items-center gap-1.5"><i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-[#3B2412]"></i> University of the Punjab</span>
-              </div>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 w-full md:w-auto">
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mahasaleemi053@gmail.com&su=Free%20Funnel%20Audit%20Request" target="_blank" rel="noopener noreferrer" class="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#3B2412] text-white text-sm font-semibold shadow-xs hover:bg-[#25160b] transition-all">
-              <i data-lucide="mail" class="w-4 h-4"></i> Email via Gmail
-            </a>
-            <a href="https://www.linkedin.com/in/maha-s-7bb503419" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center p-3 rounded-full bg-white border border-[#C08877]/60 text-[#3B2412] hover:bg-[#FDF8F6]">
-              <i data-lucide="linkedin" class="w-4 h-4"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATIONS SECTION -->
-  <section id="certifications" class="py-20 md:py-24 bg-white border-b border-[#E8C4B8]/30">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold uppercase tracking-wider text-[#3B2412] mb-3">
-          <i data-lucide="award" class="w-3.5 h-3.5"></i>
-          <span>Verified Credentials</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif-heading font-bold text-[#1A1A1A] leading-tight mb-4">
-          Industry Certifications
-        </h2>
-        <p class="text-base sm:text-lg text-[#333333]">
-          Credentials across inbound conversion, direct email architecture, paid search acquisition, and applied artificial intelligence.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="p-6 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 flex flex-col justify-between shadow-xs">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-white border border-[#E8C4B8] flex items-center justify-center mb-5 text-[#3B2412] shadow-2xs">
-              <i data-lucide="award" class="w-6 h-6"></i>
-            </div>
-            <span class="text-xs font-bold text-[#3B2412] uppercase tracking-wider block mb-1">HubSpot Academy</span>
-            <h3 class="text-base font-bold text-[#1A1A1A] mb-3">Content Marketing Certified</h3>
-          </div>
-          <div class="pt-4 border-t border-[#E8C4B8]/60 flex items-center justify-between text-xs text-[#333333]/80">
-            <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Issued Jun 2026</span>
-            <span>Expires Jun 2028</span>
-          </div>
-        </div>
-
-        <div class="p-6 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 flex flex-col justify-between shadow-xs">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-white border border-[#E8C4B8] flex items-center justify-center mb-5 text-[#3B2412] shadow-2xs">
-              <i data-lucide="award" class="w-6 h-6"></i>
-            </div>
-            <span class="text-xs font-bold text-[#3B2412] uppercase tracking-wider block mb-1">HubSpot Academy</span>
-            <h3 class="text-base font-bold text-[#1A1A1A] mb-3">Email Marketing Certified</h3>
-          </div>
-          <div class="pt-4 border-t border-[#E8C4B8]/60 flex items-center justify-between text-xs text-[#333333]/80">
-            <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Issued Jul 2026</span>
-            <span>Expires Aug 2028</span>
-          </div>
-        </div>
-
-        <div class="p-6 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 flex flex-col justify-between shadow-xs">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-white border border-[#E8C4B8] flex items-center justify-center mb-5 text-[#3B2412] shadow-2xs">
-              <i data-lucide="award" class="w-6 h-6"></i>
-            </div>
-            <span class="text-xs font-bold text-[#3B2412] uppercase tracking-wider block mb-1">Google Digital Academy</span>
-            <h3 class="text-base font-bold text-[#1A1A1A] mb-3">Google Ads Search Certified</h3>
-          </div>
-          <div class="pt-4 border-t border-[#E8C4B8]/60 flex items-center justify-between text-xs text-[#333333]/80">
-            <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Issued Jul 2026</span>
-            <span>Expires Jul 2027</span>
-          </div>
-        </div>
-
-        <div class="p-6 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 flex flex-col justify-between shadow-xs">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-white border border-[#E8C4B8] flex items-center justify-center mb-5 text-[#3B2412] shadow-2xs">
-              <i data-lucide="award" class="w-6 h-6"></i>
-            </div>
-            <span class="text-xs font-bold text-[#3B2412] uppercase tracking-wider block mb-1">OpenAI</span>
-            <h3 class="text-base font-bold text-[#1A1A1A] mb-3">Applied AI Foundations</h3>
-          </div>
-          <div class="pt-4 border-t border-[#E8C4B8]/60 flex items-center justify-between text-xs text-[#333333]/80">
-            <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Issued Jul 2026</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURED WORK (TABS) -->
-  <section id="work" class="py-20 md:py-28 bg-[#FDF8F6] border-b border-[#E8C4B8]/30">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-12">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#C08877]/40 text-xs font-semibold uppercase tracking-wider text-[#3B2412] mb-3 shadow-xs">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-          <span>Centerpiece Case Study</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif-heading font-bold text-[#1A1A1A] leading-tight mb-4">
-          Featured Direct-Response Campaign
-        </h2>
-        <p class="text-base sm:text-lg text-[#333333]">
-          Full-funnel conversion copywriting for high-ticket aesthetic medicine: Meta Video Ads, a 7-Part Nurture Sequence, and a Full Video Sales Letter (VSL).
-        </p>
-      </div>
-
-      <!-- Context Card -->
-      <div class="p-8 sm:p-10 rounded-2xl bg-white border border-[#C08877]/60 shadow-xs mb-12">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-[#E8C4B8]/60">
-          <div>
-            <span class="text-xs font-bold uppercase tracking-widest text-[#3B2412] block mb-1">Client Campaign</span>
-            <h3 class="text-2xl sm:text-3xl font-serif-heading font-bold text-[#1A1A1A]">
-              Clearwell Dermatology — Adult Acne Multi-Session Treatment Program
-            </h3>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="px-3.5 py-1.5 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold text-[#3B2412]">
-              Dermatology & Medical Aesthetic
-            </span>
-            <span class="px-3.5 py-1.5 rounded-full bg-[#3B2412] text-white text-xs font-semibold">
-              $600–$1,200 Packages
-            </span>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 text-sm text-[#333333]">
-          <div>
-            <strong class="text-[#1A1A1A] block mb-1.5">Target Audience:</strong>
-            <p class="leading-relaxed">Warm traffic, adults 20–30, burned out on products that overpromised and skeptical of upsells.</p>
-          </div>
-          <div>
-            <strong class="text-[#1A1A1A] block mb-1.5">The Offer Structure:</strong>
-            <p class="leading-relaxed">Medical-grade facials, topicals, laser therapy. $150–$350 single session, $600–$1,200 for 4–6 session package.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab Switcher -->
-      <div class="flex justify-center mb-10">
-        <div class="inline-flex p-1.5 rounded-full bg-white border border-[#C08877]/40 shadow-xs">
-          <button id="tabAdsBtn" onclick="switchTab('ads')" class="tab-btn flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-[#3B2412] text-white shadow-xs">
-            <i data-lucide="video" class="w-4 h-4"></i> Video Ads (5 Scripts)
-          </button>
-          <button id="tabEmailsBtn" onclick="switchTab('emails')" class="tab-btn flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 text-[#333333] hover:text-[#3B2412]">
-            <i data-lucide="mail" class="w-4 h-4"></i> Email Sequence (7 Emails)
-          </button>
-          <button id="tabVslBtn" onclick="switchTab('vsl')" class="tab-btn flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 text-[#333333] hover:text-[#3B2412]">
-            <i data-lucide="file-text" class="w-4 h-4"></i> Full VSL Script
-          </button>
-        </div>
-      </div>
-
-      <!-- ADS CONTENT PANE (5 FULL SCRIPTS) -->
-      <div id="paneAds" class="space-y-8">
-        <!-- Ad 1 -->
-        <div class="p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs">
-          <div class="flex flex-col sm:flex-row justify-between gap-4 pb-4 border-b border-[#E8C4B8]/60">
-            <div>
-              <span class="px-3 py-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-bold text-[#3B2412]">Ad Script 01</span>
-              <h4 class="text-2xl font-serif-heading font-bold text-[#1A1A1A] mt-2">Ad 1: "The Five Minute Visit"</h4>
-            </div>
-            <button onclick="copyAd(1)" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold text-[#3B2412] hover:bg-[#3B2412] hover:text-white transition-colors self-start sm:self-auto">
-              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Script
-            </button>
-          </div>
-          <div class="space-y-4 py-6 text-sm">
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#3B2412]">
-              <div class="text-xs font-bold text-[#3B2412] uppercase mb-1">Hook (0:00–0:03)</div>
-              <p class="font-serif-heading italic">"I used to give patients five minutes and a prescription. I don't do that anymore."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#C08877]">
-              <div class="text-xs font-bold text-[#C08877] uppercase mb-1">Problem Agitation (0:03–0:18)</div>
-              <p>"Early in my career, that's what a packed schedule looked like. Write the script, move to the next room, hope the patient figured out the rest on their own. I'd hear back weeks later that their skin got worse before anyone explained purging was normal. That's not good medicine, it's just fast medicine."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#3B2412]">
-              <div class="text-xs font-bold text-[#3B2412] uppercase mb-1">Unique Angle & Mechanism (0:18–0:32)</div>
-              <p>"Now I sit down with every patient and walk through why their acne keeps returning before I treat anything. We build a six to eight week plan that adjusts as your skin responds, not a script you fill and figure out alone."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-emerald-700">
-              <div class="text-xs font-bold text-emerald-800 uppercase mb-1">Call to Action (0:32–0:42)</div>
-              <p class="font-semibold">"If your last dermatologist visit felt rushed, come see us. I'll actually explain what's happening to your skin before we start treating it."</p>
-            </div>
-          </div>
-          <div class="p-4 rounded-xl bg-[#FDF8F6] border border-[#C08877]/50 text-xs">
-            <strong class="text-[#3B2412] block mb-1">Why it works:</strong>
-            Reframes a common failure point (the rushed appointment) as something the speaker used to do and has since corrected, which builds credibility through admitted imperfection rather than a polished sales claim.
-          </div>
-        </div>
-
-        <!-- Ad 2 -->
-        <div class="p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs">
-          <div class="flex flex-col sm:flex-row justify-between gap-4 pb-4 border-b border-[#E8C4B8]/60">
-            <div>
-              <span class="px-3 py-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-bold text-[#3B2412]">Ad Script 02</span>
-              <h4 class="text-2xl font-serif-heading font-bold text-[#1A1A1A] mt-2">Ad 2: "The Upsell"</h4>
-            </div>
-            <button onclick="copyAd(2)" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold text-[#3B2412] hover:bg-[#3B2412] hover:text-white transition-colors self-start sm:self-auto">
-              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Script
-            </button>
-          </div>
-          <div class="space-y-4 py-6 text-sm">
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#3B2412]">
-              <div class="text-xs font-bold text-[#3B2412] uppercase mb-1">Hook (0:00–0:03)</div>
-              <p class="font-serif-heading italic">"I'm a dermatologist, and I will not point at your pores to sell you a product line."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#C08877]">
-              <div class="text-xs font-bold text-[#C08877] uppercase mb-1">Problem Agitation (0:03–0:16)</div>
-              <p>"I've had patients come to me after MedSpa visits where an esthetician listed everything wrong with their skin, then handed them a six hundred dollar shopping list. That's not treatment. That's a sales pitch wearing a lab coat."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#3B2412]">
-              <div class="text-xs font-bold text-[#3B2412] uppercase mb-1">Unique Angle & Mechanism (0:16–0:30)</div>
-              <p>"In my practice, we don't do that. No upsells during your session. We build your treatment plan around your skin, and we work with whatever's already in your routine that's actually helping."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-emerald-700">
-              <div class="text-xs font-bold text-emerald-800 uppercase mb-1">Call to Action (0:30–0:40)</div>
-              <p class="font-semibold">"Book a consultation and see how a session runs without the pitch at the end."</p>
-            </div>
-          </div>
-          <div class="p-4 rounded-xl bg-[#FDF8F6] border border-[#C08877]/50 text-xs">
-            <strong class="text-[#3B2412] block mb-1">Why it works:</strong>
-            Names the exact mechanism of past exploitation (pointing out flaws to sell product) rather than a vague promise of "honesty," which makes the guarantee feel specific and earned.
-          </div>
-        </div>
-
-        <!-- Ad 3 -->
-        <div class="p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs">
-          <div class="flex flex-col sm:flex-row justify-between gap-4 pb-4 border-b border-[#E8C4B8]/60">
-            <div>
-              <span class="px-3 py-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-bold text-[#3B2412]">Ad Script 03</span>
-              <h4 class="text-2xl font-serif-heading font-bold text-[#1A1A1A] mt-2">Ad 3: "Still Breaking Out at 26"</h4>
-            </div>
-            <button onclick="copyAd(3)" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold text-[#3B2412] hover:bg-[#3B2412] hover:text-white transition-colors self-start sm:self-auto">
-              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Script
-            </button>
-          </div>
-          <div class="space-y-4 py-6 text-sm">
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#3B2412]">
-              <div class="text-xs font-bold text-[#3B2412] uppercase mb-1">Hook (0:00–0:03)</div>
-              <p class="font-serif-heading italic">"Patients ask me constantly, why am I still breaking out at 26?"</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#C08877]">
-              <div class="text-xs font-bold text-[#C08877] uppercase mb-1">Problem Agitation (0:03–0:17)</div>
-              <p>"Adult acne isn't rare, and it's almost never bad luck. Most of the patients I see have spent years stacking cleansers, serums, and prescriptions on top of each other without anyone explaining what their skin actually needed."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#3B2412]">
-              <div class="text-xs font-bold text-[#3B2412] uppercase mb-1">Unique Angle & Mechanism (0:17–0:31)</div>
-              <p>"In most cases, the real issue is a damaged skin barrier from years of harsh products layered together. My program spends the first two weeks calming that barrier before we introduce active treatment at all, which is why results tend to hold instead of relapsing."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-emerald-700">
-              <div class="text-xs font-bold text-emerald-800 uppercase mb-1">Call to Action (0:31–0:41)</div>
-              <p class="font-semibold">"If that sounds like your skin, book a consultation with me. Link below."</p>
-            </div>
-          </div>
-          <div class="p-4 rounded-xl bg-[#FDF8F6] border border-[#C08877]/50 text-xs">
-            <strong class="text-[#3B2412] block mb-1">Why it works:</strong>
-            Externalizes blame away from the patient ("it's almost never bad luck") while still giving a concrete physiological explanation, which relieves shame without sounding dismissive.
-          </div>
-        </div>
-
-        <!-- Ad 4 -->
-        <div class="p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs">
-          <div class="flex flex-col sm:flex-row justify-between gap-4 pb-4 border-b border-[#E8C4B8]/60">
-            <div>
-              <span class="px-3 py-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-bold text-[#3B2412]">Ad Script 04</span>
-              <h4 class="text-2xl font-serif-heading font-bold text-[#1A1A1A] mt-2">Ad 4: "The Mirror Check"</h4>
-            </div>
-            <button onclick="copyAd(4)" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold text-[#3B2412] hover:bg-[#3B2412] hover:text-white transition-colors self-start sm:self-auto">
-              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Script
-            </button>
-          </div>
-          <div class="space-y-4 py-6 text-sm">
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#3B2412]">
-              <div class="text-xs font-bold text-[#3B2412] uppercase mb-1">Hook (0:00–0:03)</div>
-              <p class="font-serif-heading italic">"The patients I see aren't chasing perfect skin. They're exhausted."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#C08877]">
-              <div class="text-xs font-bold text-[#C08877] uppercase mb-1">Problem Agitation (0:03–0:19)</div>
-              <p>"Most of them describe the same thing to me. Checking their skin in every mirror they pass, covering up before video calls, second-guessing a photo before they post it. That mental weight is often harder on someone than the acne itself."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#3B2412]">
-              <div class="text-xs font-bold text-[#3B2412] uppercase mb-1">Unique Angle & Mechanism (0:19–0:33)</div>
-              <p>"I'm not going to promise you flawless skin in six weeks. What I can build is a structured plan that calms your skin enough that you stop thinking about it constantly, which is usually what people actually came in for."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-emerald-700">
-              <div class="text-xs font-bold text-emerald-800 uppercase mb-1">Call to Action (0:33–0:43)</div>
-              <p class="font-semibold">"If you're ready to stop checking the mirror, book your first session with me."</p>
-            </div>
-          </div>
-          <div class="p-4 rounded-xl bg-[#FDF8F6] border border-[#C08877]/50 text-xs">
-            <strong class="text-[#3B2412] block mb-1">Why it works:</strong>
-            Explicitly rejects the "flawless skin" promise this audience has learned to distrust, replacing it with the actual emotional relief they desire.
-          </div>
-        </div>
-
-        <!-- Ad 5 -->
-        <div class="p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs">
-          <div class="flex flex-col sm:flex-row justify-between gap-4 pb-4 border-b border-[#E8C4B8]/60">
-            <div>
-              <span class="px-3 py-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-bold text-[#3B2412]">Ad Script 05</span>
-              <h4 class="text-2xl font-serif-heading font-bold text-[#1A1A1A] mt-2">Ad 5: "Before You Try Another Serum"</h4>
-            </div>
-            <button onclick="copyAd(5)" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold text-[#3B2412] hover:bg-[#3B2412] hover:text-white transition-colors self-start sm:self-auto">
-              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Script
-            </button>
-          </div>
-          <div class="space-y-4 py-6 text-sm">
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#3B2412]">
-              <div class="text-xs font-bold text-[#3B2412] uppercase mb-1">Hook (0:00–0:03)</div>
-              <p class="font-serif-heading italic">"Before you buy another forty dollar serum, I want to tell you something as a dermatologist."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#C08877]">
-              <div class="text-xs font-bold text-[#C08877] uppercase mb-1">Problem Agitation (0:03–0:18)</div>
-              <p>"I see patients who've spent more treating their acne piecemeal than they realize. A cleanser here, a serum there, a rushed dermatology visit that never really addressed the cause. It adds up, and none of it answers why the breakouts keep coming back."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-[#3B2412]">
-              <div class="text-xs font-bold text-[#3B2412] uppercase mb-1">Unique Angle & Mechanism (0:18–0:32)</div>
-              <p>"A single session with me runs $150 to $350. If you decide to continue into the full program, that cost applies directly to your package. Nothing wasted while you figure out whether it's right for you."</p>
-            </div>
-            <div class="p-4 rounded-xl bg-[#FDF8F6] border-l-4 border-emerald-700">
-              <div class="text-xs font-bold text-emerald-800 uppercase mb-1">Call to Action (0:32–0:42)</div>
-              <p class="font-semibold">"Book your first session and I'll walk you through an actual plan for your skin. Link below."</p>
-            </div>
-          </div>
-          <div class="p-4 rounded-xl bg-[#FDF8F6] border border-[#C08877]/50 text-xs">
-            <strong class="text-[#3B2412] block mb-1">Why it works:</strong>
-            Addresses the price objection by reframing it against cumulative spending on failed products, removing financial risk with credit-rollover.
-          </div>
-        </div>
-      </div>
-
-      <!-- EMAILS CONTENT PANE (7 FULL EMAILS) -->
-      <div id="paneEmails" class="hidden space-y-4">
-        <!-- Email 1 -->
-        <div class="rounded-2xl bg-white border border-[#C08877]/50 overflow-hidden shadow-xs">
-          <button onclick="toggleEmail('e1')" class="w-full p-6 text-left flex items-center justify-between hover:bg-[#FDF8F6]/50">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center font-bold text-sm">01</div>
-              <div>
-                <span class="text-xs font-bold text-[#3B2412] uppercase">Email 1 – Awareness</span>
-                <h4 class="text-base sm:text-lg font-bold text-[#1A1A1A]">Subject: "the thing nobody tells you about adult acne"</h4>
-              </div>
-            </div>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-[#3B2412]"></i>
-          </button>
-          <div id="e1" class="hidden px-6 pb-6 pt-2 border-t border-[#E8C4B8]/40 bg-[#FDF8F6]/30 text-sm space-y-3">
-            <p>Hey [First Name],</p>
-            <p>You're not sixteen anymore. So why does your skin still act like it?</p>
-            <p>If you're staring at a new cyst on your jawline right now, wondering how it's possible that you're still dealing with this in your twenties, you're not alone, and you're not doing anything wrong. Adult acne isn't a hygiene problem. It's usually a barrier problem, and almost nobody explains that part to you.</p>
-            <p>Most people spend years cycling through drugstore products, viral serums, and rushed dermatologist visits before anyone actually tells them what's going on underneath the surface.</p>
-            <p>Over the next few days I want to walk you through why the usual approach keeps failing this specific type of acne, and what actually works instead. No sales pitch today. Just the truth about what's happening to your skin.</p>
-            <p>Reply and tell me what you've already tried. I read every response.</p>
-            <p class="font-semibold pt-2">[First Name from Clearwell Dermatology]</p>
-          </div>
-        </div>
-
-        <!-- Email 2 -->
-        <div class="rounded-2xl bg-white border border-[#C08877]/50 overflow-hidden shadow-xs">
-          <button onclick="toggleEmail('e2')" class="w-full p-6 text-left flex items-center justify-between hover:bg-[#FDF8F6]/50">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center font-bold text-sm">02</div>
-              <div>
-                <span class="text-xs font-bold text-[#3B2412] uppercase">Email 2 – Problem Agitation</span>
-                <h4 class="text-base sm:text-lg font-bold text-[#1A1A1A]">Subject: "why your skin keeps getting worse after it gets better"</h4>
-              </div>
-            </div>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-[#3B2412]"></i>
-          </button>
-          <div id="e2" class="hidden px-6 pb-6 pt-2 border-t border-[#E8C4B8]/40 bg-[#FDF8F6]/30 text-sm space-y-3">
-            <p>Most people who come to us have already been through the same three rounds.</p>
-            <p>Round one is over the counter. Salicylic acid, benzoyl peroxide, drying everything out for a week, then the skin panics and produces even more oil.</p>
-            <p>Round two is the internet routine. Retinol, niacinamide, vitamin C, acid exfoliants layered together causing irritation and broken barriers.</p>
-            <p>Round three is the rushed derm visit. Five minutes, a prescription, and unmanaged peeling.</p>
-            <p>By the time people find us, they ask: is my skin just permanently broken? It isn't. None of those addressed the actual barrier damage. Tomorrow I'll explain what that means.</p>
-            <p class="font-semibold pt-2">[First Name]</p>
-          </div>
-        </div>
-
-        <!-- Email 3 -->
-        <div class="rounded-2xl bg-white border border-[#C08877]/50 overflow-hidden shadow-xs">
-          <button onclick="toggleEmail('e3')" class="w-full p-6 text-left flex items-center justify-between hover:bg-[#FDF8F6]/50">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center font-bold text-sm">03</div>
-              <div>
-                <span class="text-xs font-bold text-[#3B2412] uppercase">Email 3 – Mechanism Reveal</span>
-                <h4 class="text-base sm:text-lg font-bold text-[#1A1A1A]">Subject: "the missing piece in every acne treatment you've tried"</h4>
-              </div>
-            </div>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-[#3B2412]"></i>
-          </button>
-          <div id="e3" class="hidden px-6 pb-6 pt-2 border-t border-[#E8C4B8]/40 bg-[#FDF8F6]/30 text-sm space-y-3">
-            <p>Acne isn't just clogged pores. It's inflammation sitting on top of a damaged skin barrier.</p>
-            <p>Our 6 to 8 week protocol works in three phases: Weeks 1–2 calm inflammation and repair the barrier. Weeks 3–5 introduce targeted treatment once the skin can tolerate it. Weeks 6–8 stabilize and fade post-acne marks.</p>
-            <p class="font-semibold pt-2">[First Name]</p>
-          </div>
-        </div>
-
-        <!-- Email 4 -->
-        <div class="rounded-2xl bg-white border border-[#C08877]/50 overflow-hidden shadow-xs">
-          <button onclick="toggleEmail('e4')" class="w-full p-6 text-left flex items-center justify-between hover:bg-[#FDF8F6]/50">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center font-bold text-sm">04</div>
-              <div>
-                <span class="text-xs font-bold text-[#3B2412] uppercase">Email 4 – Proof & Authority</span>
-                <h4 class="text-base sm:text-lg font-bold text-[#1A1A1A]">Subject: "what week 2, week 4, and week 8 actually look like"</h4>
-              </div>
-            </div>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-[#3B2412]"></i>
-          </button>
-          <div id="e4" class="hidden px-6 pb-6 pt-2 border-t border-[#E8C4B8]/40 bg-[#FDF8F6]/30 text-sm space-y-3">
-            <p>By week two: less painful cystic breakouts. By week four: noticeable reduction in active lesions without peeling. By week eight: calm, predictable skin.</p>
-            <p>Every plan is led by licensed providers who examine your skin with full clinical diagnostics.</p>
-            <p class="font-semibold pt-2">[First Name]</p>
-          </div>
-        </div>
-
-        <!-- Email 5 -->
-        <div class="rounded-2xl bg-white border border-[#C08877]/50 overflow-hidden shadow-xs">
-          <button onclick="toggleEmail('e5')" class="w-full p-6 text-left flex items-center justify-between hover:bg-[#FDF8F6]/50">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center font-bold text-sm">05</div>
-              <div>
-                <span class="text-xs font-bold text-[#3B2412] uppercase">Email 5 – Offer Breakdown</span>
-                <h4 class="text-base sm:text-lg font-bold text-[#1A1A1A]">Subject: "how the program actually works (pricing included)"</h4>
-              </div>
-            </div>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-[#3B2412]"></i>
-          </button>
-          <div id="e5" class="hidden px-6 pb-6 pt-2 border-t border-[#E8C4B8]/40 bg-[#FDF8F6]/30 text-sm space-y-3">
-            <p>Start with a single diagnostic session ($150–$350). 100% of that session fee rolls directly into your 4–6 session package ($600–$1,200).</p>
-            <p>Zero product upsell guarantee: we work with your current gentle routine.</p>
-            <p class="font-semibold pt-2">[First Name]</p>
-          </div>
-        </div>
-
-        <!-- Email 6 -->
-        <div class="rounded-2xl bg-white border border-[#C08877]/50 overflow-hidden shadow-xs">
-          <button onclick="toggleEmail('e6')" class="w-full p-6 text-left flex items-center justify-between hover:bg-[#FDF8F6]/50">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center font-bold text-sm">06</div>
-              <div>
-                <span class="text-xs font-bold text-[#3B2412] uppercase">Email 6 – Objection Handling</span>
-                <h4 class="text-base sm:text-lg font-bold text-[#1A1A1A]">Subject: ""will you just try to sell me more stuff?""</h4>
-              </div>
-            </div>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-[#3B2412]"></i>
-          </button>
-          <div id="e6" class="hidden px-6 pb-6 pt-2 border-t border-[#E8C4B8]/40 bg-[#FDF8F6]/30 text-sm space-y-3">
-            <p>No quotas, no product lines, no pressure. If a session isn't the right fit, you walk away with an honest diagnostic.</p>
-            <p class="font-semibold pt-2">[First Name]</p>
-          </div>
-        </div>
-
-        <!-- Email 7 -->
-        <div class="rounded-2xl bg-white border border-[#C08877]/50 overflow-hidden shadow-xs">
-          <button onclick="toggleEmail('e7')" class="w-full p-6 text-left flex items-center justify-between hover:bg-[#FDF8F6]/50">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-[#3B2412] text-white flex items-center justify-center font-bold text-sm">07</div>
-              <div>
-                <span class="text-xs font-bold text-[#3B2412] uppercase">Email 7 – Urgency / Close</span>
-                <h4 class="text-base sm:text-lg font-bold text-[#1A1A1A]">Subject: "last call before this cohort fills"</h4>
-              </div>
-            </div>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-[#3B2412]"></i>
-          </button>
-          <div id="e7" class="hidden px-6 pb-6 pt-2 border-t border-[#E8C4B8]/40 bg-[#FDF8F6]/30 text-sm space-y-3">
-            <p>Diagnostic slots are limited each month because every session is one-on-one with a licensed provider. Book your session below.</p>
-            <p class="font-semibold pt-2">[First Name]</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- VSL CONTENT PANE (FULL 11 SECTIONS) -->
-      <div id="paneVsl" class="hidden space-y-6">
-        <div class="p-6 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs">
-          <h4 class="text-2xl font-serif-heading font-bold text-[#1A1A1A]">"The Skin Barrier Truth" (Full 11-Part VSL Script)</h4>
-          <span class="text-xs text-[#3B2412] font-semibold">6–9 minutes runtime at natural speaking pace</span>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs text-sm space-y-3">
-          <span class="text-xs font-bold text-[#3B2412] uppercase">1. Hook</span>
-          <p class="italic">"If you've spent the last few years trying every acne product on the internet and your skin still isn't cooperating... Your skin isn't broken. It's been mistreated. Not by you. By the routine you were told to follow."</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs text-sm space-y-3">
-          <span class="text-xs font-bold text-[#3B2412] uppercase">2. Big Promise</span>
-          <p>"Over the next few minutes, I'm going to show you the protocol we use to calm active breakouts and repair the barrier in 6 to 8 weeks. No ten-step routine. No sales pitch. Just a plan that treats skin like an organ that needs healing."</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs text-sm space-y-3">
-          <span class="text-xs font-bold text-[#3B2412] uppercase">3. Relatability</span>
-          <p>"You already know the morning routine. Checking your jawline in the mirror before you open your eyes, half-used serums in your cabinet, rushed five-minute derm appointments, and MedSpa upsells."</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs text-sm space-y-3">
-          <span class="text-xs font-bold text-[#3B2412] uppercase">4. Problem Agitation</span>
-          <p>"Every failed attempt stripped your barrier. Harsh actives cause your stratum corneum to thin, triggering more oil production and more breakouts. You're stuck in a loop."</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs text-sm space-y-3">
-          <span class="text-xs font-bold text-[#3B2412] uppercase">5. New Opportunity</span>
-          <p>"At Clearwell, we rebuild the barrier first. Calm first. Then clarity."</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs text-sm space-y-3">
-          <span class="text-xs font-bold text-[#3B2412] uppercase">6. Mechanism Explanation</span>
-          <p>"Phase 1 (Weeks 1–2): Calm & Repair. Phase 2 (Weeks 3–5): Targeted Treatment. Phase 3 (Weeks 6–8): Stabilization. With a strict Zero-Upsell Guarantee."</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs text-sm space-y-3">
-          <span class="text-xs font-bold text-[#3B2412] uppercase">7. Proof</span>
-          <p>"Documented photographic progression at weeks 0, 2, 4, 6, and 8 under standardized clinical lighting."</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs text-sm space-y-3">
-          <span class="text-xs font-bold text-[#3B2412] uppercase">8. Offer Reveal</span>
-          <p>"Start with a $150–$350 diagnostic session. 100% credited toward your full 4–6 session protocol ($600–$1,200)."</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs text-sm space-y-3">
-          <span class="text-xs font-bold text-[#3B2412] uppercase">9. Bonuses</span>
-          <p>"Pre-consult intake review, home barrier-repair guide, and direct message provider access between sessions."</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs text-sm space-y-3">
-          <span class="text-xs font-bold text-[#3B2412] uppercase">10. Urgency</span>
-          <p>"Limited client slots per month to preserve one-on-one provider attention."</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-2xl bg-white border border-[#C08877]/50 shadow-xs text-sm space-y-3">
-          <span class="text-xs font-bold text-[#3B2412] uppercase">11. Call to Action</span>
-          <p class="font-semibold">"Click below to book your diagnostic session at Clearwell Dermatology. Your fee rolls over completely."</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CALCULATOR -->
-  <section id="calculator" class="py-20 md:py-28 bg-white border-b border-[#E8C4B8]/30">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40 text-xs font-semibold uppercase tracking-wider text-[#3B2412] mb-3">
-          <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
-          <span>Interactive ROI Model</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif-heading font-bold text-[#1A1A1A] leading-tight mb-4">
-          Aesthetic Practice Revenue Loss Calculator
-        </h2>
-        <p class="text-base sm:text-lg text-[#333333]">
-          See how much revenue your clinic leaves on the table each month when unbooked consultations walk out without a strategic follow-up system.
-        </p>
-
-        <!-- Currency Selector -->
-        <div class="mt-8 flex justify-center">
-          <div class="inline-flex p-1 rounded-full bg-[#FDF8F6] border border-[#C08877]/40">
-            <button id="btnUSD" onclick="setCurrency('USD')" class="px-5 py-1.5 rounded-full text-xs font-bold bg-[#3B2412] text-white shadow-xs">USD ($)</button>
-            <button id="btnPKR" onclick="setCurrency('PKR')" class="px-5 py-1.5 rounded-full text-xs font-bold text-[#333333]">PKR (₨)</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div class="lg:col-span-7 p-8 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 shadow-xs space-y-8">
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="text-sm font-bold text-[#1A1A1A]">Monthly Consultations:</label>
-              <span id="valConsults" class="text-base font-bold text-[#3B2412] bg-white px-3 py-1 rounded-lg border border-[#E8C4B8]">40 consults</span>
-            </div>
-            <input id="sliderConsults" type="range" min="10" max="200" step="5" value="40" oninput="updateCalculator()" class="w-full accent-[#3B2412] cursor-pointer">
-          </div>
-
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="text-sm font-bold text-[#1A1A1A]">Average Treatment Package Value:</label>
-              <span id="valPackage" class="text-base font-bold text-[#3B2412] bg-white px-3 py-1 rounded-lg border border-[#E8C4B8]">$900</span>
-            </div>
-            <input id="sliderPackage" type="range" min="300" max="4000" step="50" value="900" oninput="updateCalculator()" class="w-full accent-[#3B2412] cursor-pointer">
-          </div>
-
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="text-sm font-bold text-[#1A1A1A]">Current Consult Booking Rate:</label>
-              <span id="valRate" class="text-base font-bold text-[#3B2412] bg-white px-3 py-1 rounded-lg border border-[#E8C4B8]">30%</span>
-            </div>
-            <input id="sliderRate" type="range" min="10" max="70" step="5" value="30" oninput="updateCalculator()" class="w-full accent-[#3B2412] cursor-pointer">
-          </div>
-        </div>
-
-        <div class="lg:col-span-5 p-8 rounded-2xl bg-[#3B2412] text-white shadow-lg flex flex-col justify-between">
-          <div>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold uppercase tracking-wider mb-6">
-              <i data-lucide="trending-up" class="w-3.5 h-3.5 text-[#E8C4B8]"></i>
-              <span>+15% Target Conversion Lift</span>
-            </div>
-
-            <div class="mb-6">
-              <span class="text-xs uppercase tracking-wider text-white/70 block mb-1">Monthly Recoverable Revenue</span>
-              <div id="resMonthly" class="text-3xl sm:text-4xl font-serif-heading font-bold text-white">$5,400 <span class="text-sm font-sans font-normal text-white/70">/month</span></div>
-            </div>
-
-            <div class="mb-8 pt-4 border-t border-white/20">
-              <span class="text-xs uppercase tracking-wider text-white/70 block mb-1">Annualized Opportunity</span>
-              <div id="resAnnual" class="text-2xl sm:text-3xl font-serif-heading font-bold text-[#E8C4B8]">$64,800 <span class="text-xs font-sans font-normal text-white/70">/year</span></div>
-            </div>
-
-            <div class="p-4 rounded-xl bg-white/10 border border-white/15 text-xs space-y-2 mb-6">
-              <div class="flex justify-between">
-                <span class="text-white/80">Extra Patients Booked:</span>
-                <span id="resExtra" class="font-bold text-white">+6 patients/mo</span>
-              </div>
-            </div>
-          </div>
-
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mahasaleemi053@gmail.com&su=Free%20Funnel%20Audit%20Request" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-[#3B2412] text-sm font-bold shadow-md hover:bg-[#FDF8F6] transition-all">
-            <span>Discuss Closing This Gap</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
-        </div>
+      <div class="about-body">
+        <p>A patient watches the Reel. They click the ad. They land on the page, and for a moment, they're interested. Then, somewhere between interest and booking, they leave, and nobody on the team can point to exactly where it happened.</p>
+        <p>That gap is rarely a traffic problem. It's a trust problem, sitting in the words between the click and the calendar. The hook that doesn't hold. The page that doesn't answer the objection already forming in the patient's head. The follow-up that never comes, so a warm lead goes quiet.</p>
+        <p>I write copy that closes that specific gap: ad and Reel scripts that pre-qualify the right patient, VSLs that pre-sell the treatment before the consult, and email sequences that win back the ones who didn't convert the first time.</p>
+        <p class="about-caveat">One line from my own positioning, worth stating plainly: I aim for 15 to 20% more booked appointments within 30 days. That's a target I write toward, not a guarantee attached to every clinic or every campaign.</p>
       </div>
     </div>
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="py-20 md:py-28 bg-white border-b border-[#E8C4B8]/30">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif-heading font-bold text-[#1A1A1A] mb-4">
-          Services Built for Dermatology & Aesthetic Practices
-        </h2>
-        <p class="text-base sm:text-lg text-[#333333]">Every deliverable is crafted on clinical authority, patient psychology, and high-ticket conversion.</p>
+  <section class="section services" id="services">
+    <div class="section-inner">
+      <h2 class="section-heading">Four services, one system</h2>
+      <p class="section-lede">Each service does a specific job in the same journey, from a stranger's attention to a booked patient.</p>
+
+      <div class="services-list">
+        <article class="service-row">
+          <div class="service-num" aria-hidden="true">Ads</div>
+          <div class="service-copy">
+            <h3>Meta Ads &amp; Ad Copy</h3>
+            <p>Direct-response ad scripts built to stop the scroll, speak to a specific pain point, and pull the right prospect toward an inquiry rather than a passive like. Every angle is built around an objection your audience is already carrying, so the ad disarms it instead of ignoring it.</p>
+          </div>
+        </article>
+
+        <article class="service-row">
+          <div class="service-num" aria-hidden="true">Reels</div>
+          <div class="service-copy">
+            <h3>Reel &amp; Short-Form Video Scripts</h3>
+            <p>Not captions. Full scripts, structured around a hook that earns the next three seconds, a pain point the viewer recognizes, and a retention arc that carries them to a clear call to action, built for education and persuasion rather than a trending sound.</p>
+          </div>
+        </article>
+
+        <article class="service-row">
+          <div class="service-num" aria-hidden="true">VSL</div>
+          <div class="service-copy">
+            <h3>VSL Scripts</h3>
+            <p>Long-form video sales letters that build trust, name the real problem, walk through the mechanism behind the offer, handle the objections a skeptical patient hasn't said out loud yet, and move them toward booking without leaning on hype.</p>
+          </div>
+        </article>
+
+        <article class="service-row">
+          <div class="service-num" aria-hidden="true">Email</div>
+          <div class="service-copy">
+            <h3>Email Sequences</h3>
+            <p>Sequences for the patients who clicked, got interested, and then went quiet. Built to nurture, handle the objections holding them back, and re-open the door to booking without reading like a discount blast.</p>
+          </div>
+        </article>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="p-8 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-bold text-[#C08877] uppercase block mb-1">Offer 01</span>
-            <h3 class="text-2xl font-serif-heading font-bold text-[#1A1A1A] mb-2">Ad Copywriting</h3>
-            <p class="text-sm font-semibold text-[#3B2412] mb-6">Pre-qualifying patient acquisition</p>
-            <ul class="space-y-3 text-xs sm:text-sm text-[#333333] mb-6">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C08877]"></i> Multi-angle Meta & Google video ad scripts</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C08877]"></i> High-intent hook variations</li>
-            </ul>
-          </div>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mahasaleemi053@gmail.com&su=Free%20Funnel%20Audit%20Request" target="_blank" rel="noopener noreferrer" class="w-full text-center px-4 py-2.5 rounded-xl bg-white border border-[#C08877]/60 text-xs font-bold text-[#3B2412] hover:bg-[#3B2412] hover:text-white transition-all">Inquire for Clinic</a>
-        </div>
+      <div class="flow-diagram" aria-label="Attention to conversion flow">
+        <span>Attention</span>
+        <span class="flow-arrow" aria-hidden="true">↓</span>
+        <span>Interest</span>
+        <span class="flow-arrow" aria-hidden="true">↓</span>
+        <span>Trust</span>
+        <span class="flow-arrow" aria-hidden="true">↓</span>
+        <span>Conversion</span>
+      </div>
+    </div>
+  </section>
 
-        <div class="p-8 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-bold text-[#C08877] uppercase block mb-1">Offer 02</span>
-            <h3 class="text-2xl font-serif-heading font-bold text-[#1A1A1A] mb-2">Landing Pages & VSLs</h3>
-            <p class="text-sm font-semibold text-[#3B2412] mb-6">Pre-sell trust-building copy</p>
-            <ul class="space-y-3 text-xs sm:text-sm text-[#333333] mb-6">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C08877]"></i> Full long-form Video Sales Letter scripts</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C08877]"></i> Zero-upsell mechanism positioning</li>
-            </ul>
-          </div>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mahasaleemi053@gmail.com&su=Free%20Funnel%20Audit%20Request" target="_blank" rel="noopener noreferrer" class="w-full text-center px-4 py-2.5 rounded-xl bg-white border border-[#C08877]/60 text-xs font-bold text-[#3B2412] hover:bg-[#3B2412] hover:text-white transition-all">Inquire for Clinic</a>
-        </div>
+  <!-- FRAMEWORK -->
+  <section class="section framework" id="framework">
+    <div class="section-inner">
+      <h2 class="section-heading">How I think about the work</h2>
+      <p class="section-lede">Three stages, each with its own job and its own copy.</p>
 
-        <div class="p-8 rounded-2xl bg-[#FDF8F6] border border-[#C08877]/50 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-bold text-[#C08877] uppercase block mb-1">Offer 03</span>
-            <h3 class="text-2xl font-serif-heading font-bold text-[#1A1A1A] mb-2">Email Win-Backs</h3>
-            <p class="text-sm font-semibold text-[#3B2412] mb-6">Automated lost consult recovery</p>
-            <ul class="space-y-3 text-xs sm:text-sm text-[#333333] mb-6">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C08877]"></i> 7–10 part Nurture & Reassurance series</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C08877]"></i> Post-consult objection handling</li>
-            </ul>
-          </div>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mahasaleemi053@gmail.com&su=Free%20Funnel%20Audit%20Request" target="_blank" rel="noopener noreferrer" class="w-full text-center px-4 py-2.5 rounded-xl bg-white border border-[#C08877]/60 text-xs font-bold text-[#3B2412] hover:bg-[#3B2412] hover:text-white transition-all">Inquire for Clinic</a>
+      <div class="framework-track">
+        <div class="framework-stage">
+          <h3>Pre-Qualify</h3>
+          <p>Ads and Reel scripts that attract the right people and make them want to take the next step, so the leads coming in are already closer to a fit.</p>
+        </div>
+        <div class="framework-stage">
+          <h3>Pre-Sell</h3>
+          <p>VSLs and conversion-focused copy that build trust, create desire, and address the objections a prospect would otherwise raise at the consult.</p>
+        </div>
+        <div class="framework-stage">
+          <h3>Win Back</h3>
+          <p>Email sequences and follow-up messaging that re-engage the people who were interested but didn't convert the first time around.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="py-20 md:py-28 bg-[#FDF8F6] text-center">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#C08877]/40 text-xs font-semibold uppercase tracking-wider text-[#3B2412] mb-6">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Next Step
-      </div>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif-heading font-bold text-[#1A1A1A] mb-6">
-        Ready to stop losing booked treatments to bad copy?
-      </h2>
-      <p class="text-base sm:text-lg text-[#333333] max-w-2xl mx-auto mb-10">
-        Let's analyze where patients drop off in your funnel. I'll send you a custom breakdown of the top conversion leaks in your ads, consults, and emails.
-      </p>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mahasaleemi053@gmail.com&su=Free%20Funnel%20Audit%20Request" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#3B2412] text-white text-base font-bold shadow-md hover:bg-[#25160b] transition-all mb-12">
-        <span>Get Your Free Funnel Audit</span>
-        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-      </a>
+  <!-- SPEC WORK / PORTFOLIO -->
+  <section class="section work" id="work">
+    <div class="section-inner">
+      <h2 class="section-heading">Spec work</h2>
+      <p class="section-lede">Built around a composite dermatology brief, Clearwell Dermatology, an adult acne treatment program priced at $150 to $350 per session. Filter by type, then open a piece to read the full copy.</p>
 
-      <div class="pt-8 border-t border-[#E8C4B8]/60 flex flex-wrap justify-center gap-4">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mahasaleemi053@gmail.com&su=Free%20Funnel%20Audit%20Request" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#3B2412] text-white text-sm font-semibold">
-          <i data-lucide="mail" class="w-4 h-4"></i> Email Me (mahasaleemi053@gmail.com)
-        </a>
-        <a href="https://www.linkedin.com/in/maha-s-7bb503419" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border-2 border-[#3B2412] text-[#3B2412] text-sm font-semibold">
-          <i data-lucide="linkedin" class="w-4 h-4"></i> Connect on LinkedIn
-        </a>
+      <div class="filter-bar" role="tablist" aria-label="Filter spec work by type">
+        <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">All work</button>
+        <button class="filter-btn" data-filter="ads" role="tab" aria-selected="false">Ads</button>
+        <button class="filter-btn" data-filter="email" role="tab" aria-selected="false">Email</button>
+        <button class="filter-btn" data-filter="vsl" role="tab" aria-selected="false">VSL</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid"><!-- injected by script.js --></div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="section calculator" id="calculator">
+    <div class="section-inner">
+      <h2 class="section-heading">What's a conversion gap worth?</h2>
+      <p class="section-lede">A rough planning tool, not a promise. Enter your own numbers to see what closing part of the gap could be worth over a month.</p>
+
+      <div class="calc-panel">
+        <div class="calc-currency-toggle" role="group" aria-label="Currency">
+          <button type="button" class="currency-btn is-active" data-currency="USD">USD $</button>
+          <button type="button" class="currency-btn" data-currency="PKR">PKR ₨</button>
+        </div>
+
+        <div class="calc-grid">
+          <div class="calc-inputs">
+            <div class="calc-field">
+              <div class="calc-field-head">
+                <label for="calcLeads">Monthly leads or consults</label>
+                <span class="calc-value" id="calcLeadsValue">120</span>
+              </div>
+              <input type="range" id="calcLeads" min="0" max="500" step="5" value="120">
+            </div>
+
+            <div class="calc-field">
+              <div class="calc-field-head">
+                <label for="calcCurrentRate">Current booking rate</label>
+                <span class="calc-value" id="calcCurrentRateValue">20%</span>
+              </div>
+              <input type="range" id="calcCurrentRate" min="0" max="100" step="1" value="20">
+            </div>
+
+            <div class="calc-field">
+              <div class="calc-field-head">
+                <label for="calcTreatmentValue">Average treatment value</label>
+                <span class="calc-value" id="calcTreatmentValueValue">$250</span>
+              </div>
+              <input type="range" id="calcTreatmentValue" min="50" max="1000" step="10" value="250">
+            </div>
+
+            <div class="calc-field">
+              <div class="calc-field-head">
+                <label for="calcImprovedRate">Estimated improved booking rate</label>
+                <span class="calc-value" id="calcImprovedRateValue">25%</span>
+              </div>
+              <input type="range" id="calcImprovedRate" min="0" max="100" step="1" value="25">
+            </div>
+          </div>
+
+          <div class="calc-results">
+            <div class="calc-result-row">
+              <span>Current bookings / month</span>
+              <strong id="resCurrentBookings">-</strong>
+            </div>
+            <div class="calc-result-row">
+              <span>Potential bookings / month</span>
+              <strong id="resPotentialBookings">-</strong>
+            </div>
+            <div class="calc-result-row">
+              <span>Additional bookings / month</span>
+              <strong id="resAdditionalBookings">-</strong>
+            </div>
+            <div class="calc-result-row calc-result-highlight">
+              <span>Estimated additional revenue / month</span>
+              <strong id="resAdditionalRevenue">-</strong>
+            </div>
+          </div>
+        </div>
+        <p class="calc-disclaimer">These figures are an estimate for planning purposes only. They assume the improved rate you enter, they don't come from a guaranteed lift, and actual results depend on your offer, your traffic, and your clinic.</p>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-white border-t border-[#E8C4B8]/40 py-12">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#333333]/70">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-full bg-[#3B2412] text-white flex items-center justify-center font-bold text-xs">MS</div>
-        <span><strong>Maha Saleemi</strong> • Conversion Copywriter for Dermatology & Aesthetic Clinics</span>
-      </div>
-      <div>© 2026 Maha Saleemi. All rights reserved. • Islamabad, Pakistan</div>
+  <!-- WHY WORK WITH ME -->
+  <section class="section why">
+    <div class="section-inner why-grid">
+      <h2 class="section-heading">Why this approach</h2>
+      <ul class="why-list">
+        <li>Every angle starts from a real objection a patient is already carrying, not a generic pain point.</li>
+        <li>Proof is built as a documented process (what week two, four and eight actually look like) rather than a vague promise.</li>
+        <li>Trust is sequenced before the offer, so the pitch lands after the skepticism has somewhere to go.</li>
+        <li>Objections get handled in the reader's own words, not smoothed over with reassurance.</li>
+        <li>Every CTA says exactly what happens next, so nobody has to guess what "learn more" means.</li>
+      </ul>
     </div>
-  </footer>
+  </section>
 
-  <!-- CLIENT-SIDE SCRIPT -->
-  <script>
-    lucide.createIcons();
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="section-inner contact-inner">
+      <h2 class="contact-heading">Your audience is already paying attention.<br>Let's turn that into action.</h2>
+      <div class="contact-links">
+        <a href="mailto:mahasaleemi053@gmail.com" class="btn btn-primary">mahasaleemi053@gmail.com</a>
+        <a href="https://www.linkedin.com/in/maha-s-7bb503419" class="btn btn-ghost" target="_blank" rel="noopener">Connect on LinkedIn</a>
+      </div>
+    </div>
+  </section>
 
-    // Mobile Navigation
-    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <span>Maha Saleemi, Conversion Copywriter</span>
+    <span>Islamabad, Pakistan</span>
+  </div>
+</footer>
+
+<!-- PROJECT MODAL -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" aria-label="Close project">×</button>
+    <div class="modal-scroll">
+      <p class="modal-eyebrow" id="modalType"></p>
+      <h3 id="modalTitle"></h3>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================================
+   Mobile navigation
+   ========================================================================== */
+const navToggle = document.getElementById('navToggle');
+const mobileNav = document.getElementById('mobileNav');
+
+navToggle.addEventListener('click', () => {
+  const isOpen = mobileNav.classList.toggle('is-open');
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+  navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+});
+
+mobileNav.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => {
+    mobileNav.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open menu');
+  });
+});
+
+/* ==========================================================================
+   Portfolio data
+   Sourced directly from Maha's Clearwell Dermatology spec work.
+   ========================================================================== */
+const portfolioData = [
+  {
+    id: 'ads-clearwell',
+    type: 'ads',
+    typeLabel: 'Meta Ads',
+    title: 'Adult Acne Multi-Session Program — 5 Ad Scripts',
+    description: 'Five direct-response ad scripts for a $150-350/session medical-grade acne program, each built around a different point of audience skepticism.',
+    modalDesc: 'Client brief: direct-response ad scripts for a $150-350/session (or $600-1,200 package) medical-grade acne treatment program, targeting adults 20-30 disillusioned with rushed dermatology visits, MedSpa upselling, and failed DIY skincare routines. Five scripts were built around five distinct entry points into audience skepticism, each engineered to disarm a specific objection before introducing the offer.',
+    pieces: [
+      {
+        label: 'Ad 1 · Dermatologist disillusionment · Cold to warm',
+        title: 'The Five Minute Visit',
+        body: [
+          ['Hook (0:00-0:03)', '"I used to give patients five minutes and a prescription. I don\u2019t do that anymore."'],
+          ['Problem (0:03-0:18)', 'Early in my career, that\u2019s what a packed schedule looked like. Write the script, move to the next room, hope the patient figured out the rest on their own. I\u2019d hear back weeks later that their skin got worse before anyone explained purging was normal. That\u2019s not good medicine, it\u2019s just fast medicine.'],
+          ['Unique angle (0:18-0:32)', 'Now I sit down with every patient and walk through why their acne keeps returning before I treat anything. We build a six to eight week plan that adjusts as your skin responds, not a script you fill and figure out alone.'],
+          ['CTA (0:32-0:42)', 'If your last dermatologist visit felt rushed, come see us. I\u2019ll actually explain what\u2019s happening to your skin before we start treating it.'],
+        ],
+        why: 'Reframes a common failure point (the rushed appointment) as something the speaker used to do and has since corrected, which builds credibility through admitted imperfection rather than a polished sales claim.',
+      },
+      {
+        label: 'Ad 2 · Zero-upsell trust guarantee · Cold',
+        title: 'The Upsell',
+        body: [
+          ['Hook (0:00-0:03)', '"I\u2019m a dermatologist, and I will not point at your pores to sell you a product line."'],
+          ['Problem (0:03-0:16)', 'I\u2019ve had patients come to me after MedSpa visits where an esthetician listed everything wrong with their skin, then handed them a six hundred dollar shopping list. That\u2019s not treatment. That\u2019s a sales pitch wearing a lab coat.'],
+          ['Unique angle (0:16-0:30)', 'In my practice, we don\u2019t do that. No upsells during your session. We build your treatment plan around your skin, and we work with whatever\u2019s already in your routine that\u2019s actually helping.'],
+          ['CTA (0:30-0:40)', 'Book a consultation and see how a session runs without the pitch at the end.'],
+        ],
+        why: 'Names the exact mechanism of past exploitation (pointing out flaws to sell product) rather than a vague promise of "honesty," which makes the guarantee feel specific and earned.',
+      },
+      {
+        label: 'Ad 3 · Age-based frustration · Warm',
+        title: 'Still Breaking Out at 26',
+        body: [
+          ['Hook (0:00-0:03)', 'Patients ask me constantly, why am I still breaking out at 26?'],
+          ['Problem (0:03-0:17)', 'Adult acne isn\u2019t rare, and it\u2019s almost never bad luck. Most of the patients I see have spent years stacking cleansers, serums, and prescriptions on top of each other without anyone explaining what their skin actually needed.'],
+          ['Unique angle (0:17-0:31)', 'In most cases, the real issue is a damaged skin barrier from years of harsh products layered together. My program spends the first two weeks calming that barrier before we introduce active treatment at all, which is why results tend to hold instead of relapsing.'],
+          ['CTA (0:31-0:41)', 'If that sounds like your skin, book a consultation with me. Link below.'],
+        ],
+        why: 'Externalizes blame away from the patient ("it\u2019s almost never bad luck") while still giving a concrete physiological explanation, which relieves shame without sounding dismissive of the real damage caused by past products.',
+      },
+      {
+        label: 'Ad 4 · Emotional self-consciousness · Warm to retargeted',
+        title: 'The Mirror Check',
+        body: [
+          ['Hook (0:00-0:03)', 'The patients I see aren\u2019t chasing perfect skin. They\u2019re exhausted.'],
+          ['Problem (0:03-0:19)', 'Most of them describe the same thing to me. Checking their skin in every mirror they pass, covering up before video calls, second-guessing a photo before they post it. That mental weight is often harder on someone than the acne itself.'],
+          ['Unique angle (0:19-0:33)', 'I\u2019m not going to promise you flawless skin in six weeks. What I can build is a structured plan that calms your skin enough that you stop thinking about it constantly, which is usually what people actually came in for.'],
+          ['CTA (0:33-0:43)', 'If you\u2019re ready to stop checking the mirror, book your first session with me.'],
+        ],
+        why: 'Explicitly rejects the "flawless skin" promise this audience has learned to distrust, then replaces it with the actual outcome they\u2019re chasing (mental relief).',
+      },
+      {
+        label: 'Ad 5 · Comparison shopping / price objection · Cold, high intent',
+        title: 'Before You Try Another Serum',
+        body: [
+          ['Hook (0:00-0:03)', 'Before you buy another forty dollar serum, I want to tell you something as a dermatologist.'],
+          ['Problem (0:03-0:18)', 'I see patients who\u2019ve spent more treating their acne piecemeal than they realize. A cleanser here, a serum there, a rushed dermatology visit that never really addressed the cause. It adds up, and none of it answers why the breakouts keep coming back.'],
+          ['Unique angle (0:18-0:32)', 'A single session with me runs $150 to $350. If you decide to continue into the full program, that cost applies directly to your package. Nothing wasted while you figure out whether it\u2019s right for you.'],
+          ['CTA (0:32-0:42)', 'Book your first session and I\u2019ll walk you through an actual plan for your skin. Link below.'],
+        ],
+        why: 'Addresses the price objection by reframing it against cumulative spending on failed products, and removes financial risk with the credit-rollover structure instead of relying on urgency or scarcity.',
+      },
+    ],
+  },
+  {
+    id: 'email-clearwell',
+    type: 'email',
+    typeLabel: 'Email Sequence',
+    title: 'Clearwell Dermatology — 7-Email Acne Program Sequence',
+    description: 'A trust-before-offer sequence that withholds the pitch until email 5, built to convert warm leads into a $199 diagnostic booking.',
+    modalDesc: 'Offer: medical-grade facials, prescription topicals, and laser/light therapy, $150-350 per session or $600-1,200 for a 4-6 session package. Audience: warm traffic, adults 20-30 who\u2019ve already cycled through OTC products and at least one disappointing derm or med spa visit. The first two emails validate the reader\u2019s failure pattern before anything is sold; the offer isn\u2019t introduced until email 5, after the mechanism and the proof have already done the trust-building work.',
+    pieces: [
+      {
+        label: 'Email 1 · Awareness',
+        title: 'the thing nobody tells you about adult acne',
+        body: [
+          ['Preview text', 'it\u2019s not your fault, and it\u2019s not your hygiene'],
+          ['Body', "You\u2019re not sixteen anymore. So why does your skin still act like it?\n\nIf you\u2019re staring at a new cyst on your jawline right now, wondering how it\u2019s possible that you\u2019re still dealing with this in your twenties, you\u2019re not alone, and you\u2019re not doing anything wrong.\n\nAdult acne isn\u2019t a hygiene problem. It\u2019s usually a barrier problem, and almost nobody explains that part to you.\n\nMost people spend years cycling through drugstore products, viral serums, and rushed dermatologist visits before anyone actually tells them what\u2019s going on underneath the surface.\n\nOver the next few days I want to walk you through why the usual approach keeps failing this specific type of acne, and what actually works instead. No sales pitch today. Just the truth about what\u2019s happening to your skin.\n\nReply and tell me what you\u2019ve already tried. I read every response."],
+        ],
+      },
+      {
+        label: 'Email 2 · Problem agitation',
+        title: 'why your skin keeps getting worse after it gets better',
+        body: [
+          ['Preview text', 'the pattern almost every adult acne sufferer goes through'],
+          ['Body', "Most people who come to us have already been through the same three rounds.\n\nRound one is over the counter. Salicylic acid, benzoyl peroxide, maybe a scrub brush when the gentle stuff doesn\u2019t work fast enough. It dries things out for a week, then the skin panics and produces even more oil to compensate.\n\nRound two is the internet routine. Retinol, niacinamide, vitamin C, an acid exfoliant, layered together because a fifteen second video said this combination changed someone\u2019s life. Instead it usually causes irritation, and now you can\u2019t tell if a new breakout is the acne or the products fighting each other.\n\nRound three is the derm visit you waited two months for. Five minutes, a prescription, and a warning that things might get worse before they get better. Nobody tells you how to manage the peeling. Nobody tells you what normal purging looks like versus what\u2019s actually a bad reaction.\n\nBy the time people find us, they\u2019ve usually asked themselves some version of this question: is my skin just permanently broken?\n\nIt isn\u2019t. But the reason none of those three rounds worked is the same reason, every time. None of them addressed the actual barrier damage underneath the breakouts. Tomorrow I\u2019ll explain what that means and why it changes everything."],
+        ],
+      },
+      {
+        label: 'Email 3 · Mechanism reveal',
+        title: 'the missing piece in every acne treatment you\u2019ve tried',
+        body: [
+          ['Body', "Here\u2019s what almost never gets explained to you at a five minute dermatology appointment or a rushed spa consult.\n\nAcne isn\u2019t just clogged pores. It\u2019s inflammation sitting on top of a damaged skin barrier, and most treatments only address one half of that equation.\n\nStrip the skin with harsh actives and you dry out the surface, but the inflammation underneath stays active, so the breakouts keep coming. Treat only the inflammation without repairing the barrier, and your skin stays reactive to everything.\n\nThat\u2019s the gap our program is built to close. Weeks one and two calm active inflammation and start repairing the barrier using light therapy and a simplified home routine, not a ten step regimen. Weeks three through five introduce targeted treatment for clogged pores and active lesions, once the skin can tolerate it. Weeks six through eight focus on fading marks and locking in a routine you can maintain without us.\n\nIt\u2019s not a miracle claim. It\u2019s a sequence, built around how skin actually heals."],
+        ],
+      },
+      {
+        label: 'Email 4 · Proof & authority',
+        title: 'what week 2, week 4, and week 8 actually look like',
+        body: [
+          ['Body', "A lot of people ask us the same question before they book anything: does this actually work, or is 6 to 8 weeks just another number designed to sound reasonable?\n\nBy week two, most patients see less active inflammation and calmer, less painful cystic breakouts, even before the deeper clearing work starts. By week four, active lesions are noticeably fewer, and skin can typically tolerate the targeted treatment phase without the peeling and redness people are used to. By week eight, most patients are dealing with maintenance and fading post-acne marks rather than active breakouts.\n\nEvery plan is built around your specific skin, led by licensed medical providers who run a full diagnostic before recommending anything. Results vary depending on where your skin is starting from, and we\u2019ll tell you honestly during your consult if your case needs a different approach or a longer timeline."],
+        ],
+      },
+      {
+        label: 'Email 5 · Offer breakdown',
+        title: 'how the program actually works (pricing included)',
+        body: [
+          ['Body', "I know a lot of people read the last email and immediately thought, okay, so what\u2019s this going to cost me, and is this just going to be another product pitch.\n\nYou don\u2019t have to commit to the full program on day one. You can start with a single diagnostic session, priced between $150 and $350, where a provider examines your skin and builds a plan specific to you. If you decide to continue, 100% of that session fee applies directly toward the full package.\n\nThe full protocol runs $600 to $1,200 for 4 to 6 sessions across your 6 to 8 week plan. We work with your current gentle routine. We are not going to hand you a $500 product suite you didn\u2019t ask for. That\u2019s a written commitment, not a sales line."],
+        ],
+      },
+      {
+        label: 'Email 6 · Objection handling',
+        title: '"will you just try to sell me more stuff?"',
+        body: [
+          ['Body', "That question comes up in almost every consult we run, so let\u2019s deal with it directly.\n\nWill you keep selling me things after I book? No. We commit to working with your existing basic routine. There\u2019s no quota, no membership lock-in, no pressure.\n\nWill this make my skin worse before it gets better? Some patients experience mild purging in the early weeks, which your provider will walk you through so you know exactly what\u2019s normal.\n\nWhat if I\u2019m one of the people this doesn\u2019t work for? This is exactly why we start with a diagnostic session instead of asking you to commit to the full package blind.\n\nIs $600 to $1,200 actually worth it compared to what I\u2019ve already spent? Most people who come to us have already spent close to that, sometimes more, on products that didn\u2019t address the actual problem."],
+        ],
+      },
+      {
+        label: 'Email 7 · Urgency / close',
+        title: 'last call before this cohort fills',
+        body: [
+          ['Body', "This is the last email in this series, so I\u2019ll keep it direct.\n\nIf you\u2019ve read this far, some part of you is tired of the cycle. New product, short-lived improvement, breakout again, repeat. That part of you already knows another cleanser isn\u2019t going to fix this.\n\nDiagnostic sessions for this month are limited because each one includes a real one-on-one consult with a provider. Booking the diagnostic session doesn\u2019t commit you to anything beyond that one appointment. If it\u2019s not the right fit, you walk away having spent $199 on an honest answer about your skin. If it is, that fee rolls fully into your program."],
+        ],
+      },
+    ],
+  },
+  {
+    id: 'vsl-clearwell',
+    type: 'vsl',
+    typeLabel: 'VSL Script',
+    title: 'The Skin Barrier Truth — Full VSL Script',
+    description: 'A 6-9 minute video sales letter built around barrier-repair positioning and a zero-upsell guarantee, for adults burned by rushed derm visits and MedSpa upsells.',
+    modalDesc: 'Structure: hook, big promise, relatability, problem agitation, new opportunity, mechanism, proof, offer reveal, bonuses, urgency, and a call to action, closing on a $150-350 diagnostic session that rolls fully into the full package.',
+    pieces: [
+      {
+        label: 'Hook',
+        title: null,
+        body: [['', "If you\u2019ve spent the last few years trying every acne product on the internet and your skin still isn\u2019t cooperating, I want you to stop for a second and consider something you probably haven\u2019t heard from a dermatologist, an esthetician, or anyone trying to sell you something.\n\nYour skin isn\u2019t broken. It\u2019s been mistreated. Not by you. By the routine you were told to follow."]],
+      },
+      {
+        label: 'Big promise',
+        title: null,
+        body: [['', "Over the next few minutes, I\u2019m going to show you the exact protocol we use at Clearwell Dermatology to calm active breakouts, repair a damaged skin barrier, and get you to visibly clearer skin in 6 to 8 weeks. No ten-step routine. No product cabinet. No one pointing at your face telling you what else is wrong with it."]],
+      },
+      {
+        label: 'Relatability',
+        title: null,
+        body: [['', "You already know the morning routine. You reach up and check your jawline before you even open your eyes, hoping the bump from last night flattened out overnight. It didn\u2019t.\n\nSomewhere in your bathroom cabinet there\u2019s a half-used bottle of something that was supposed to fix this. And the appointments haven\u2019t helped much either: a two month wait, a five minute visit, a prescription, and a \u201cthis might just be something you deal with.\u201d\n\nIf any of that sounds familiar, you\u2019re not the exception. You\u2019re the pattern."]],
+      },
+      {
+        label: 'Problem agitation',
+        title: null,
+        body: [['', "Every one of those failed attempts did the same thing to your skin. It stripped the barrier. Stacked on top of each other, harsh actives dry out your skin and trigger your glands to overproduce oil to compensate. That oil clogs your pores. Which causes more breakouts. Which sends you looking for something even stronger.\n\nYou\u2019re not failing at skincare. You\u2019re stuck in a loop that was never going to end on its own, and underneath the physical cycle sits something heavier: canceling plans because the lighting is unflattering, applying a heavier layer of foundation before video calls. None of that is vanity. It\u2019s exhausting to carry, and it\u2019s real."]],
+      },
+      {
+        label: 'New opportunity',
+        title: null,
+        body: [['', "The problem was never that your skin is uniquely difficult. The problem is that almost everything sold to treat acne attacks the surface without repairing what\u2019s underneath it. At Clearwell, before we introduce anything new to your skin, we rebuild the barrier that\u2019s been stripped by everything you\u2019ve already tried. Calm first. Then clarity."]],
+      },
+      {
+        label: 'Mechanism',
+        title: null,
+        body: [['', "The program runs across three phases over six to eight weeks.\n\nWeeks one and two calm active inflammation and repair your moisture barrier using gentle LED light therapy and hydration-focused facials, paired with a simplified two-step home routine.\n\nWeeks three through five move into targeted treatment: mild light therapy or IPL alongside controlled extractions and prescription topicals, calibrated to clear congestion without undoing the repair work.\n\nWeeks six through eight focus on stabilization, addressing post-inflammatory marks and setting you up with a maintenance plan you can sustain on your own.\n\nWe call it our Zero-Upsell Guarantee. We work with the gentle cleanser and moisturizer you already own. We are not building your bill around a shelf of proprietary creams."]],
+      },
+      {
+        label: 'Proof',
+        title: null,
+        body: [['', "We track results the same way every time. Photos at week zero, two, four, six and eight, same lighting, same angle, so you can see the progression instead of guessing at it. That\u2019s the outcome we\u2019re actually building toward. Not airbrushed skin. The ability to stop thinking about your face every time you walk into a room. Results vary by skin type and history, and we\u2019ll tell you that honestly in your consultation."]],
+      },
+      {
+        label: 'Offer reveal',
+        title: null,
+        body: [['', "You start with a single diagnostic session, priced between $150 and $350 depending on your treatment plan: a full clinical assessment plus your first calming treatment. If you continue into the full 6-to-8-week protocol, that entire session fee is credited, dollar for dollar, toward your package. The full program runs $600 to $1,200 for four to six sessions. You\u2019re never locked into the full program on day one."]],
+      },
+      {
+        label: 'Bonuses',
+        title: null,
+        body: [['', "Every client who books their diagnostic session this month also receives a pre-consultation intake review, a written barrier-repair home guide for the days you\u2019re not with us, and direct message access to your provider between sessions three and six."]],
+      },
+      {
+        label: 'Urgency & call to action',
+        title: null,
+        body: [['', "We intentionally keep our client load small enough that every session is done directly with a provider, so diagnostic slots are limited each month.\n\nIf you\u2019re tired of routines that promise everything and deliver a peeling face and a bill for products you didn\u2019t ask for, book your diagnostic session below. No product pitch, no membership pressure. Your fee rolls over completely if you continue."]],
+      },
+    ],
+  },
+];
+
+/* ==========================================================================
+   Render portfolio cards
+   ========================================================================== */
+const portfolioGrid = document.getElementById('portfolioGrid');
+
+function renderPortfolio() {
+  portfolioGrid.innerHTML = portfolioData.map((item) => `
+    <article class="portfolio-card" data-type="${item.type}">
+      <p class="card-type">${item.typeLabel}</p>
+      <h3>${item.title}</h3>
+      <p>${item.description}</p>
+      <button class="card-view-btn" data-id="${item.id}">View project</button>
+    </article>
+  `).join('');
+}
+
+renderPortfolio();
+
+/* ==========================================================================
+   Filtering
+   ========================================================================== */
+const filterButtons = document.querySelectorAll('.filter-btn');
+
+filterButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    filterButtons.forEach((b) => {
+      b.classList.remove('is-active');
+      b.setAttribute('aria-selected', 'false');
     });
+    btn.classList.add('is-active');
+    btn.setAttribute('aria-selected', 'true');
 
-    // Tab Switching
-    function switchTab(tab) {
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        b.classList.remove('bg-[#3B2412]', 'text-white', 'shadow-xs');
-        b.classList.add('text-[#333333]');
-      });
-      document.getElementById('paneAds').classList.add('hidden');
-      document.getElementById('paneEmails').classList.add('hidden');
-      document.getElementById('paneVsl').classList.add('hidden');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.portfolio-card').forEach((card) => {
+      const matches = filter === 'all' || card.dataset.type === filter;
+      card.classList.toggle('is-hidden', !matches);
+    });
+  });
+});
 
-      if (tab === 'ads') {
-        document.getElementById('paneAds').classList.remove('hidden');
-        document.getElementById('tabAdsBtn').classList.add('bg-[#3B2412]', 'text-white', 'shadow-xs');
-      } else if (tab === 'emails') {
-        document.getElementById('paneEmails').classList.remove('hidden');
-        document.getElementById('tabEmailsBtn').classList.add('bg-[#3B2412]', 'text-white', 'shadow-xs');
-      } else if (tab === 'vsl') {
-        document.getElementById('paneVsl').classList.remove('hidden');
-        document.getElementById('tabVslBtn').classList.add('bg-[#3B2412]', 'text-white', 'shadow-xs');
-      }
-    }
+/* ==========================================================================
+   Modal
+   ========================================================================== */
+const modalOverlay = document.getElementById('modalOverlay');
+const modalClose = document.getElementById('modalClose');
+const modalType = document.getElementById('modalType');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalBody = document.getElementById('modalBody');
 
-    // Email Accordion
-    function toggleEmail(id) {
-      document.getElementById(id).classList.toggle('hidden');
-    }
+function textToParagraphs(text) {
+  return text.split('\n\n').map((p) => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+}
 
-    // Copy to clipboard
-    function copyAd(num) {
-      const texts = {
-        1: `Ad 1: "The Five Minute Visit"\nHook (0:00–0:03): "I used to give patients five minutes and a prescription. I don't do that anymore."\nProblem (0:03–0:18): "Early in my career, that's what a packed schedule looked like. Write the script, move to the next room, hope the patient figured out the rest on their own. I'd hear back weeks later that their skin got worse before anyone explained purging was normal. That's not good medicine, it's just fast medicine."\nUnique Angle (0:18–0:32): "Now I sit down with every patient and walk through why their acne keeps returning before I treat anything. We build a six to eight week plan that adjusts as your skin responds, not a script you fill and figure out alone."\nCTA (0:32–0:42): "If your last dermatologist visit felt rushed, come see us. I'll actually explain what's happening to your skin before we start treating it."`,
-        2: `Ad 2: "The Upsell"\nHook (0:00–0:03): "I'm a dermatologist, and I will not point at your pores to sell you a product line."\nProblem (0:03–0:16): "I've had patients come to me after MedSpa visits where an esthetician listed everything wrong with their skin, then handed them a six hundred dollar shopping list. That's not treatment. That's a sales pitch wearing a lab coat."\nUnique Angle (0:16–0:30): "In my practice, we don't do that. No upsells during your session. We build your treatment plan around your skin, and we work with whatever's already in your routine that's actually helping."\nCTA (0:30–0:40): "Book a consultation and see how a session runs without the pitch at the end."`,
-        3: `Ad 3: "Still Breaking Out at 26"\nHook (0:00–0:03): "Patients ask me constantly, why am I still breaking out at 26?"\nProblem (0:03–0:17): "Adult acne isn't rare, and it's almost never bad luck. Most of the patients I see have spent years stacking cleansers, serums, and prescriptions on top of each other without anyone explaining what their skin actually needed."\nUnique Angle (0:17–0:31): "In most cases, the real issue is a damaged skin barrier from years of harsh products layered together. My program spends the first two weeks calming that barrier before we introduce active treatment at all, which is why results tend to hold instead of relapsing."\nCTA (0:31–0:41): "If that sounds like your skin, book a consultation with me. Link below."`,
-        4: `Ad 4: "The Mirror Check"\nHook (0:00–0:03): "The patients I see aren't chasing perfect skin. They're exhausted."\nProblem (0:03–0:19): "Most of them describe the same thing to me. Checking their skin in every mirror they pass, covering up before video calls, second-guessing a photo before they post it. That mental weight is often harder on someone than the acne itself."\nUnique Angle (0:19–0:33): "I'm not going to promise you flawless skin in six weeks. What I can build is a structured plan that calms your skin enough that you stop thinking about it constantly, which is usually what people actually came in for."\nCTA (0:33–0:43): "If you're ready to stop checking the mirror, book your first session with me."`,
-        5: `Ad 5: "Before You Try Another Serum"\nHook (0:00–0:03): "Before you buy another forty dollar serum, I want to tell you something as a dermatologist."\nProblem (0:03–0:18): "I see patients who've spent more treating their acne piecemeal than they realize. A cleanser here, a serum there, a rushed dermatology visit that never really addressed the cause. It adds up, and none of it answers why the breakouts keep coming back."\nUnique Angle (0:18–0:32): "A single session with me runs $150 to $350. If you decide to continue into the full program, that cost applies directly to your package. Nothing wasted while you figure out whether it's right for you."\nCTA (0:32–0:42): "Book your first session and I'll walk you through an actual plan for your skin. Link below."`
-      };
-      navigator.clipboard.writeText(texts[num] || ("Ad Script " + num));
-      alert("Script " + num + " copied to clipboard!");
-    }
+function openProject(id) {
+  const item = portfolioData.find((p) => p.id === id);
+  if (!item) return;
 
-    // Interactive Revenue Loss Calculator
-    let currentCurrency = 'USD';
+  modalType.textContent = item.typeLabel;
+  modalTitle.textContent = item.title;
+  modalDesc.textContent = item.modalDesc;
 
-    function setCurrency(cur) {
-      currentCurrency = cur;
-      const btnU = document.getElementById('btnUSD');
-      const btnP = document.getElementById('btnPKR');
-      const sPack = document.getElementById('sliderPackage');
+  modalBody.innerHTML = item.pieces.map((piece) => {
+    const bodyHtml = piece.body.map(([label, text]) => {
+      const labelHtml = label ? `<h4>${label}</h4>` : '';
+      return `${labelHtml}${textToParagraphs(text)}`;
+    }).join('');
+    const titleHtml = piece.title ? `<p class="piece-title">${piece.title}</p>` : '';
+    const whyHtml = piece.why ? `<div class="why-note"><strong>Why it works:</strong> ${piece.why}</div>` : '';
 
-      if (cur === 'PKR') {
-        btnP.classList.add('bg-[#3B2412]', 'text-white');
-        btnU.classList.remove('bg-[#3B2412]', 'text-white');
-        sPack.min = 50000;
-        sPack.max = 1000000;
-        sPack.step = 10000;
-        sPack.value = 250000;
-      } else {
-        btnU.classList.add('bg-[#3B2412]', 'text-white');
-        btnP.classList.remove('bg-[#3B2412]', 'text-white');
-        sPack.min = 300;
-        sPack.max = 4000;
-        sPack.step = 50;
-        sPack.value = 900;
-      }
-      updateCalculator();
-    }
+    return `
+      <div class="piece-block">
+        <p class="piece-label">${piece.label}</p>
+        ${titleHtml}
+        ${bodyHtml}
+        ${whyHtml}
+      </div>
+    `;
+  }).join('');
 
-    function updateCalculator() {
-      const consults = parseInt(document.getElementById('sliderConsults').value);
-      const pkg = parseInt(document.getElementById('sliderPackage').value);
-      const rate = parseInt(document.getElementById('sliderRate').value);
+  modalOverlay.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+  modalClose.focus();
+}
 
-      document.getElementById('valConsults').innerText = consults + ' consults';
-      const sym = currentCurrency === 'PKR' ? '₨' : '$';
-      document.getElementById('valPackage').innerText = sym + pkg.toLocaleString();
-      document.getElementById('valRate').innerText = rate + '%';
+function closeProject() {
+  modalOverlay.classList.remove('is-open');
+  document.body.style.overflow = '';
+}
 
-      const currentBookings = Math.round(consults * (rate / 100));
-      const newRate = Math.min(100, rate + 15);
-      const newBookings = Math.round(consults * (newRate / 100));
-      const extraBookings = newBookings - currentBookings;
-      const monthly = extraBookings * pkg;
-      const annual = monthly * 12;
+portfolioGrid.addEventListener('click', (e) => {
+  const btn = e.target.closest('.card-view-btn');
+  if (btn) openProject(btn.dataset.id);
+});
 
-      document.getElementById('resMonthly').innerHTML = sym + monthly.toLocaleString() + ' <span class="text-sm font-sans font-normal text-white/70">/month</span>';
-      document.getElementById('resAnnual').innerHTML = sym + annual.toLocaleString() + ' <span class="text-xs font-sans font-normal text-white/70">/year</span>';
-      document.getElementById('resExtra').innerText = '+' + extraBookings + ' patients/mo';
-    }
-  </script>
+modalClose.addEventListener('click', closeProject);
+
+modalOverlay.addEventListener('click', (e) => {
+  if (e.target === modalOverlay) closeProject();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modalOverlay.classList.contains('is-open')) closeProject();
+});
+
+/* ==========================================================================
+   Calculator (slider-based)
+   ========================================================================== */
+const calcLeads = document.getElementById('calcLeads');
+const calcCurrentRate = document.getElementById('calcCurrentRate');
+const calcTreatmentValue = document.getElementById('calcTreatmentValue');
+const calcImprovedRate = document.getElementById('calcImprovedRate');
+
+const calcLeadsValue = document.getElementById('calcLeadsValue');
+const calcCurrentRateValue = document.getElementById('calcCurrentRateValue');
+const calcTreatmentValueValue = document.getElementById('calcTreatmentValueValue');
+const calcImprovedRateValue = document.getElementById('calcImprovedRateValue');
+
+const resCurrentBookings = document.getElementById('resCurrentBookings');
+const resPotentialBookings = document.getElementById('resPotentialBookings');
+const resAdditionalBookings = document.getElementById('resAdditionalBookings');
+const resAdditionalRevenue = document.getElementById('resAdditionalRevenue');
+
+const currencyButtons = document.querySelectorAll('.currency-btn');
+let currentCurrency = 'USD';
+
+const treatmentRanges = {
+  USD: { min: 50, max: 1000, step: 10, value: 250 },
+  PKR: { min: 5000, max: 150000, step: 500, value: 40000 },
+};
+
+function currencySymbol() {
+  return currentCurrency === 'USD' ? '$' : '\u20A8';
+}
+
+function formatMoney(value) {
+  const rounded = Math.round(value);
+  return `${currencySymbol()}${rounded.toLocaleString('en-US')}`;
+}
+
+function updateFill(input) {
+  const min = Number(input.min);
+  const max = Number(input.max);
+  const val = Number(input.value);
+  const percent = max > min ? ((val - min) / (max - min)) * 100 : 0;
+  input.style.setProperty('--fill-percent', `${percent}%`);
+}
+
+function runCalculator() {
+  const leads = Number(calcLeads.value);
+  const currentRate = Number(calcCurrentRate.value) / 100;
+  const treatmentValue = Number(calcTreatmentValue.value);
+  const improvedRate = Number(calcImprovedRate.value) / 100;
+
+  calcLeadsValue.textContent = leads.toLocaleString('en-US');
+  calcCurrentRateValue.textContent = `${calcCurrentRate.value}%`;
+  calcTreatmentValueValue.textContent = formatMoney(treatmentValue);
+  calcImprovedRateValue.textContent = `${calcImprovedRate.value}%`;
+
+  const currentBookings = leads * currentRate;
+  const potentialBookings = leads * improvedRate;
+  const additionalBookings = Math.max(0, potentialBookings - currentBookings);
+  const additionalRevenue = additionalBookings * treatmentValue;
+
+  resCurrentBookings.textContent = Math.round(currentBookings).toLocaleString('en-US');
+  resPotentialBookings.textContent = Math.round(potentialBookings).toLocaleString('en-US');
+  resAdditionalBookings.textContent = Math.round(additionalBookings).toLocaleString('en-US');
+  resAdditionalRevenue.textContent = formatMoney(additionalRevenue);
+
+  [calcLeads, calcCurrentRate, calcTreatmentValue, calcImprovedRate].forEach(updateFill);
+}
+
+[calcLeads, calcCurrentRate, calcTreatmentValue, calcImprovedRate].forEach((input) => {
+  input.addEventListener('input', runCalculator);
+});
+
+currencyButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    currencyButtons.forEach((b) => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    currentCurrency = btn.dataset.currency;
+
+    const range = treatmentRanges[currentCurrency];
+    calcTreatmentValue.min = range.min;
+    calcTreatmentValue.max = range.max;
+    calcTreatmentValue.step = range.step;
+    calcTreatmentValue.value = range.value;
+
+    runCalculator();
+  });
+});
+
+runCalculator();
+
+</script>
 </body>
 </html>
